@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./Css/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />
+        
+        <title>Trà Sữa</title>
+        <body>
+            <header>
+                <div class="h_top">
+                    <div class="chao">
+                        <h3>Coffe & Tea</h3>
+                    </div>
+                    <div class="logo">
+                        <img width="60px", src="img/Screenshot 2023-09-29 105536.png">
+                    </div>
+                    <div class="search">
+                        <input type="text" class="search_input" placeholder="Bạn cần tìm sản phẩm gì?   ">
+                    </div>
+                    <div class="others">
+                        <li>
+                            <a href="dangnhap.html" class="cart">
+                                <i class="fa-solid fa-user icon-cart"></i>
+                                Đăng Nhập
+                            </a>
+                        </li>
+                        <li>
+                            <a href="giohang.html" class="cart">
+                                <i class="fa-solid fa-cart-shopping icon-cart"></i>
+                                Giỏ Hàng
+                            </a>
+                        </li>
+                    </div>
+                </div>
+                <div class="h_menu">
+                    <li>
+                        <a href="trangchu.html">TRANG CHỦ</a>
+                    </li>
+                    <li>
+                        <a href="">GIỚI THIỆU</a>
+                    </li>
+                    <li>
+                        <a href="">SẢN PHẨM</a>
+                        <div class="list-box">
+                            <ul>
+                                <li class="list-box-item">
+                                    <a href="coffe.html">Coffe</a>
+                                </li>
+                                <li class="list-box-item">
+                                    <a href="trasua.html">Trà Sữa</a>
+                                </li>
+                                <li class="list-box-item">
+                                    <a href="trahoaqua.html">Trà Hoa Quả</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">ƯU ĐÃI</a>
+                    </li>
+                    <li>
+                        <a href="">TUYỂN DỤNG</a>
+                    </li>
+                </div>
+            </header>
+
+            <!--------cac san pham-------->
+            <section class="category">
+                <div class="container">
+                    <div class="row">
+                        <div class="category-left">
+                            <ul>
+                                <li class="category-left-li"><a href="coffe.html">Coffe</a></li>
+                                <li class="category-left-li"><a href="trasua.html">Trà Sữa</a></li>
+                                <li class="category-left-li"><a href="trahoaqua.html">Trà Hoa Quả</a></li>
+                            </ul>
+                        </div>
+                        <div class="category-right row">
+                            <div class="category-right-top_item">
+                                <p>Danh Mục Trà Sữa</p>
+                            </div>
+                            <div class="category-right-top_item">
+                                <button><span>Bộ lọc</span><i class="fa-solid fa-sort-down icon-down"></i></button>
+                            </div>
+                            <div class="category-right-top_item">
+                                <select name="" id="">
+                                    <option value="">Sắp xếp</option>
+                                    <option value="">Giá cao đến thấp</option>
+                                    <option value="">Giá thấp đến cao</option>
+                                </select>
+                            </div>
+                            <div class="category-right-sp row">
+                                <div class="category-right-sp-item">
+                                    <a href="./chitietsp.html"><img src="./img/tra-sua-tran-chau-dai-loan.png" width="200px" height="200px" alt=""></a>
+                                    <h1>Trà Sữa Truyền Thống</h1>
+                                    <p>49.000₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/dd.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa Trân Trâu Đường Đen</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/Trà-sữa-Matcha-đậu-đỏ-2.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa MatCha Đậu Đỏ</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/tr matcha.jfif" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa MatCha</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <a href="./chitietsp.html"><img src="./img/chery-choco-e1699592921653-300x395.png" width="200px" height="200px" alt=""></a>
+                                    <h1>Trà Sữa Cherry Choco</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/caramen-e1699593566549-300x349.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa Crème Yin Yang</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/trà sữa đào.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa Vị Đào</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/sua-gạo-rang-gen1699592969484-300x398.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa Gạo Rang Genmaicha</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/trasuamangcau.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa Mãng Cầu</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/olong.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa Olong Thạch Thảo Mộc</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/tra_sua_hojicha.webp" width="200px" height="200px" alt="">
+                                    <h1>Trà sữa Gạo rang Hojicha Satoen</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                                <div class="category-right-sp-item">
+                                    <img src="./img/socola-e1634875773577-300x293.png" width="200px" height="200px" alt="">
+                                    <h1>Trà Sữa Socola Trân Châu</h1>
+                                    <p>40.999₫</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!---Footer-->
+            <footer class="footer">
+                <div class="footer-content">
+                    <ul class="list-inline">
+                        <li>
+                            <p>Giới thiệu về Coffee & tea</p>
+                            <p>Nhượng quyền</p>
+                            <p>Tin tức khuyến mại</p>
+                            <p>Cửa hàng</p>
+                            <p>Quy định chung</p>
+                         </li>
+                        
+                        <li>
+                            <p>Hình thức thanh toán</p>
+                            <p>Vận chuyển giao nhận</p>
+                            <p>Đổi trả và hoàn tiền</p>
+                            <p>Bảo vệ thông tin cá nhân</p>
+                            <p>Cơ sở gần nhất</p>
+                           
+                        </li>
+                        
+                        <li>
+                            <div class="social-logo">
+                                <a href=""> 
+                                   <img src="./assets/img/New folder/trangchu-icon2-tiktok-031122.png" alt="" class="icon" >
+                                </a>
+                                <a href="https://www.facebook.com/Quoccviettt">
+                                    <img src="./assets/img/New folder/facebook.jpg" alt="" class="icon" >
+                                </a>
+                                <a href="">
+                                    <img src="./assets/img/New folder/youtube.jpg" alt="" style="width:50px ; margin-right: 26px;">
+                                </a>
+                                <a href="">
+                                    <img src="./assets/img/New folder/insta.webp" alt="" class="icon">
+                                </a>
+                            </div>
+                        </li>         
+                    </ul>
+                </div>
+                <div class="coppy-right">
+                   Địa chỉ: Xã Tân Châu, huyện Khoái Châu, tỉnh Hưng Yên
+                   <h1> Hotline: 0981218907</h1>
+                </div>
+            </footer>
+        </body>
+    </head>
+</html>
