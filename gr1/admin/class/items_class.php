@@ -24,7 +24,6 @@ class items{
     }
 
     public function show_items(){
-        // $query = "SELECT * FROM tbl_itemss";
         $query = "SELECT tbl_itemss.*, tbl_category.category_name FROM tbl_itemss INNER JOIN tbl_category ON tbl_itemss.category_id = tbl_category.category_id";
         $result = $this -> db -> select($query);
         return $result;

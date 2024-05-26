@@ -8,13 +8,6 @@ include "class/product_class.php";
 <?php
     $product = new product;
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // var_dump($_POST, $_FILES);
-        // echo '<pre>';
-        // echo print_r($_POST);
-        // echo '</pre>';
-        // echo '<pre>';
-        // echo print_r($_FILES);
-        // echo '</pre>';
         $insert_product = $product -> insert_product($_POST, $_FILES); 
     }
 ?>
@@ -55,9 +48,27 @@ include "class/product_class.php";
                     </select>
                     <label for="">Nhập giá sản phẩm<span style="color: red">*</span></label>
                     <input name="product_price" required type="text">
-                    <input name="product_img" type="file">
+
+                    <label for="">Chọn ảnh sản phẩm<span style="color: red">*</span></label>
+                    <input name="product_img" type="file" onchange="previewImage(event)">
+                    <img id="preview" src="<?php echo isset($product_details['product_img']) ? $product_details['product_img'] : ''; ?>" width="100" style="display: <?php echo isset($product_details['product_img']) ? 'block' : 'none'; ?>;"><br>
+                    <input type="hidden" name="current_img" value="<?php echo isset($product_details['product_img']) ? $product_details['product_img'] : ''; ?>">
+
                     <button type="submit">Thêm</button>
                 </form>
+                <!-- Hiển thị ảnh khi chọn -->
+                <script>
+                    function previewImage(event) {
+                        var reader = new FileReader();
+                        reader.onload = function(){
+                            var output = document.getElementById('preview');
+                            output.src = reader.result;
+                            output.style.display = 'block';
+                        };
+                        reader.readAsDataURL(event.target.files[0]);
+                    }
+                </script>
+                <!--  -->
             </div>
         </div>
     </section>

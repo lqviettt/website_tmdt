@@ -24,65 +24,113 @@ class product{
         return $result;
     }
 
+    public function show_product(){
+        // $query = "SELECT * FROM tbl_itemss";
+        $query = "SELECT p.product_id, p.product_name, i.items_name, p.product_price, p.product_img
+        FROM tbl_product p
+        JOIN tbl_itemss i ON p.items_id = i.items_id
+        WHERE p.category_id = i.category_id";
+
+        $result = $this -> db -> select($query);
+        return $result;
+    }
+
     public function insert_product(){
         $product_name = $_POST['product_name'];
         $category_id = $_POST['category_id'];
         $items_id = $_POST['items_id'];
         $product_price = $_POST['product_price'];
         $product_img = $_FILES['product_img']['name'];
-        move_uploaded_file(
-            $_FILES['product_img']['tmp_name'], "uploads/".$_FILES['product_img']['name']
-        );
+        $file_path = 'uploads/';
+        $fileurl = $file_path.$_FILES['product_img']['name'];
 
-        $query = "INSERT INTO tbl_product (
-                product_name,
-                category_id, 
-                items_id,
-                product_price,
-                product_img 
-            ) VALUES (
-                '$product_name',
-                '$category_id',
-                '$items_id',
-                '$product_price',
-                '$product_img')";
-        $result = $this ->db-> insert($query);
-        // header('Location:product_list.php');
+        $filetarget = basename($_FILES['product_img']['name']);
+        $filetype = strtolower(pathinfo($product_img, PATHINFO_EXTENSION));
+        $filesize = $_FILES['product_img']['size'];
+
+        if(file_exists("uploads/$filetarget")){
+            $alert = " File da ton tai";
+            return $alert;
+        }else{
+            if($filetype != "jpg" && $filetype != "png" && $filetype != "jpeg"){
+                $alert = " Chi chon file jpg, png, jpeg";
+                return $alert;
+            }else{
+                if($filesize > 1000000){
+                    $alert = " File khong duoc lon hon 1MB";
+                    return $alert;
+                }else{
+                    move_uploaded_file(
+                        $_FILES['product_img']['tmp_name'], "uploads/".$_FILES['product_img']['name']
+                    );
+            
+                    $query = "INSERT INTO tbl_product (
+                            product_name,
+                            category_id, 
+                            items_id,
+                            product_price,
+                            product_img 
+                        ) VALUES (
+                            '$product_name',
+                            '$category_id',
+                            '$items_id',
+                            '$product_price',
+                            '$fileurl')";
+                    $result = $this ->db-> insert($query);
+                }
+            }
+        }
+        header('Location:productlist.php');
         return $result;
     }
 
+    ///
+    public function get_product_by_id($product_id) {
+        $query = "SELECT * FROM tbl_product WHERE product_id = $product_id";
+        $result = $this->db->select($query);
+        return $result;
+    }
 
+    public function update_product($product_id) {
+        $product_name = $_POST['product_name'];
+        $category_id = $_POST['category_id'];
+        $items_id = $_POST['items_id'];
+        $product_price = $_POST['product_price'];
+        $product_img = $_FILES['product_img']['name'];
+        $file_path = 'uploads/';
+        $fileurl = $file_path.$_FILES['product_img']['name'];
+        $filetype = strtolower(pathinfo($product_img, PATHINFO_EXTENSION));
+        $filesize = $_FILES['product_img']['size'];
 
-
-
-
-
-
-
-
-
+        if($filetype != "jpg" && $filetype != "png" && $filetype != "jpeg"){
+            $alert = " Chi chon file jpg, png, jpeg";
+            return $alert;
+        }else{
+            if($filesize > 1000000){
+                $alert = " File khong duoc lon hon 1MB";
+                return $alert;
+            }else{
+                move_uploaded_file(
+                    $_FILES['product_img']['tmp_name'], "uploads/".$_FILES['product_img']['name']
+                );
+            
+                $query = "UPDATE tbl_product SET
+                product_name = '$product_name',
+                category_id = '$category_id',
+                items_id = '$items_id',
+                product_price = '$product_price',
+                product_img = '$fileurl'
+                WHERE product_id = $product_id";
+                $result = $this ->db-> update($query);
+            }
+        }
+        header('Location:productlist.php');
+        return $result;
+    }
     
-
-
-
-  
-    public function get_items($items_id){
-        $query = "SELECT * FROM tbl_itemss WHERE items_id = '$items_id' ";
-        $result = $this -> db -> select($query);
-        return $result;
-    }
-
-    public function update_items($items_name, $items_id){
-        $query = "UPDATE tbl_itemss SET items_name = '$items_name' WHERE items_id = '$items_id' ";
-        $result = $this -> db -> update($query);
-        header('Location:items_list.php');
-        return $result;
-    }
-
-    public function delete_items($items_id){
-        $query = "DELETE FROM tbl_itemss WHERE items_id = '$items_id'";
-        $result = $this -> db -> delete($query);
-        header('Location:items_list.php');
+    public function delete_product($product_id) {
+        $query = "DELETE FROM tbl_product WHERE product_id = $product_id";
+        $result = $this->db->delete($query);
         return $result;
     }
 }
