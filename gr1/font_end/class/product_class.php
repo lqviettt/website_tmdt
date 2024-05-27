@@ -99,28 +99,15 @@ class product
     }
 
     ///
-    // public function get_product_by_id($product_id)
-    // {
-    //     $query = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, i.items_name, i.items_id
-    //     FROM tbl_product p
-    //     JOIN tbl_itemss i ON p.items_id = i.items_id
-    //     WHERE product_id = $product_id";
-    //     $result = $this->db->select($query);
-    //     return $result;
-    // }
-
     public function get_product_by_id($product_id)
     {
-        $query = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, 
-                 i.items_name, i.items_id, c.category_name, c.category_id
-          FROM tbl_product p
-          JOIN tbl_itemss i ON p.items_id = i.items_id
-          JOIN tbl_category c ON i.category_id = c.category_id
-          WHERE p.product_id = $product_id";
+        $query = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, i.items_name, i.items_id
+        FROM tbl_product p
+        JOIN tbl_itemss i ON p.items_id = i.items_id
+        WHERE product_id = $product_id";
         $result = $this->db->select($query);
         return $result;
     }
-    
 
     public function update_product($product_id)
     {
