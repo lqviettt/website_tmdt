@@ -16,9 +16,9 @@ $show_product = $product->show_product_by_items($items_id);
     <div class="category-right-top_item">
         <p>Danh Mục Sản Phẩm</p>
     </div>
-    <div class="category-right-top_item">
+    <!-- <div class="category-right-top_item">
         <button><span>Bộ lọc</span><i class="fa-solid fa-sort-down icon-down"></i></button>
-    </div>
+    </div> -->
     <div class="category-right-top_item">
         <select name="" id="">
             <option value="">Sắp xếp</option>

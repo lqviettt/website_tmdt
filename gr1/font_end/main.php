@@ -1,13 +1,24 @@
 <?php
 include "menu.php";
+include "class/product_class.php";
+?>
+
+<?php
+    $product = new product;
+    $cf_items_id = 25;
+    $tsua_items_id = 28;
+    $tea_items_id = 29;
+    $coffee_products = $product->get_top_products_by_items($cf_items_id);
+    $milk_tea_products = $product->get_top_products_by_items($tsua_items_id);
+    $tea_products = $product->get_top_products_by_items($tea_items_id);
 ?>
 
 
 <!----------------------Slider----------------------->
 <section id="Slide">
     <div class="slide_container">
-        <img src="./uploads_img/banner1.png">
-        <img src="./uploads_img/banner.png">
+        <img src="../uploads_img/banner1.png">
+        <img src="../uploads_img/banner.png">
 
     </div>
     <div class="dot-container">
@@ -17,211 +28,97 @@ include "menu.php";
     </div>
 </section>
 
-<!----Sản phẩm-->
+<!---------------------Sản phẩm----------------------->
+<section id="container">
+    <div class="slide-product-one">
+        <h1>COFFE BÁN CHẠY</h1>
+        <div class="slider-product-bodyyy-filtering">
+            <?php
+            if ($milk_tea_products) {
+                while ($result = $coffee_products->fetch_assoc()) {
+            ?>
+                    <div class="productt-p10">
+                        <a href="product_detail.php?id=<?php echo $result['product_id']; ?>">
 
-<div id="container">
-    <div class="container-box1">
-        <div class="slide-product-one">
-            <h1>TRÀ SỮA BÁN CHẠY</h1>
-
-            <div class="slider-product-bodyyy-filtering">
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/tr matcha.jfif" alt="">
-                        </div>
-
-                        <h1 class="home-product-item__name">
-                            Trà Sữa Matcha
-                        </h1>
-
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="chitietsp.html">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/tra-sua-tran-chau-dai-loan.png" alt="">
-                        </div>
-
-                        <h1 class="home-product-item__name">
-                            Trà Sữa Truyền Thống
-                        </h1>
-
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/trà-gạo-2-e1666419085388-300x336.png" alt="">
-                        </div>
-
-                        <h1 class="home-product-item__name">
-                            Trà Sữa Gạo Rang
-                        </h1>
-
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/dd.png" alt="">
-                        </div>
-
-                        <h1 class="home-product-item__name">
-                            Trà Sữa Trân Trâu
-                        </h1>
-
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
+                            <div class="home-product-item__img">
+                                <img width="200px" height="200px" src="<?php echo $result['product_img']; ?>" alt="">
+                            </div>
+                            <h1 class="home-product-item__name"><?php echo $result['product_name']; ?></h1>
+                            <div class="home-product-item__price">
+                                <span class="price"><?php echo $result['product_price']; ?>₫</span>
+                            </div>
+                        </a>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
+        <div class="view_product">
+        <a href="products.php?items_id=<?php echo $cf_items_id; ?>"><button id="view-more-button">Xem thêm</button></a>
         </div>
     </div>
-    <div class="container-box2">
-        <div class="slide-product-one">
-            <h1>COFFE BÁN CHẠY</h1>
-            <div class="slider-product-bodyyy-filtering">
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/3.webp" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Cà Phê Panda
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/4.webp" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Cà Phê Americano
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/5.webp" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Cà Phê Espresso
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/6.webp" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Cà Phê Đen
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
+    <div class="slide-product-one">
+        <h1>TRÀ SỮA BÁN CHẠY</h1>
+        <div class="slider-product-bodyyy-filtering">
+            <?php
+            if ($milk_tea_products) {
+                while ($result = $milk_tea_products->fetch_assoc()) {
+            ?>
+                    <div class="productt-p10">
+                        <a href="product_detail.php?id=<?php echo $result['product_id']; ?>">
+                            <div class="home-product-item__img">
+                                <img width="200px" height="200px" src="<?php echo $result['product_img']; ?>" alt="">
+                            </div>
+                            <h1 class="home-product-item__name"><?php echo $result['product_name']; ?></h1>
+                            <div class="home-product-item__price">
+                                <span class="price"><?php echo $result['product_price']; ?>₫</span>
+                            </div>
+                        </a>
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
-
-    </div>
-    <div class="container-box3">
-        <div class="slide-product-one">
-            <h1>TRÀ HOA QUẢ BÁN CHẠY</h1>
-
-            <div class="slider-product-bodyyy-filtering">
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/tra-dua-300x361.png" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Trà Dứa Golden Joy
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/tra-vai-300x361.png" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Trà Dâu Vải Thanh Mát
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/Tra-vai-hai-sennn.png" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Trà Vải Hạt Sen
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="productt-p10">
-                    <a href="">
-                        <div class="home-product-item__img">
-                            <img width="200px" height="200px" src="./img/tra-dao-la-01.png" alt="">
-                        </div>
-                        <h1 class="home-product-item__name">
-                            Trà Đào Lá Dứa
-                        </h1>
-                        <div class="home-product-item__price">
-                            <span class="price">40.999₫</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        <div class="view_product">
+        <a href="products.php?items_id=<?php echo $tsua_items_id; ?>"><button id="view-more-button">Xem thêm</button></a>
         </div>
     </div>
-    <script src="../js/slider.js"></script>
 
-    <?php
-    include "footer.php";
-    ?>
+    <div class="slide-product-one">
+        <h1>TRÀ HOA QUẢ BÁN CHẠY</h1>
+        <div class="slider-product-bodyyy-filtering">
+            <?php
+            if ($milk_tea_products) {
+                while ($result = $tea_products->fetch_assoc()) {
+            ?>
+                    <div class="productt-p10">
+                        <a href="product_detail.php?id=<?php echo $result['product_id']; ?>">
+                            <div class="home-product-item__img">
+                                <img width="200px" height="200px" src="<?php echo $result['product_img']; ?>" alt="">
+                            </div>
+                            <h1 class="home-product-item__name"><?php echo $result['product_name']; ?></h1>
+                            <div class="home-product-item__price">
+                                <span class="price"><?php echo $result['product_price']; ?>₫</span>
+                            </div>
+                        </a>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
+        <div class="view_product">
+            <a href="products.php?items_id=<?php echo $tea_items_id; ?>"><button id="view-more-button">Xem thêm</button></a>
+        </div>
+    </div>
+</section>
+
+
+<script src="../js/slider.js"></script>
+
+<?php
+include "footer.php";
+?>

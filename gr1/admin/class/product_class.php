@@ -39,14 +39,6 @@ class product
         return $result;
     }
 
-    public function show_product_by_items($items_id)
-    {
-        $query = "SELECT * FROM tbl_product WHERE items_id = '$items_id'";
-        $result = $this->db->select($query);
-        return $result;
-    }
-
-
     public function insert_product()
     {
         $product_name = $_POST['product_name'];
@@ -98,17 +90,70 @@ class product
         return $result;
     }
 
-    ///
-    // public function get_product_by_id($product_id)
-    // {
-    //     $query = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, i.items_name, i.items_id
-    //     FROM tbl_product p
-    //     JOIN tbl_itemss i ON p.items_id = i.items_id
-    //     WHERE product_id = $product_id";
-    //     $result = $this->db->select($query);
-    //     return $result;
-    // }
+    public function update_product($product_id)
+    {
+        $product_name = $_POST['product_name'];
+        $category_id = $_POST['category_id'];
+        $items_id = $_POST['items_id'];
+        $product_price = $_POST['product_price'];
+        $file_path = '../uploads_img/';
+        $fileurl = $file_path . $_FILES['product_img']['name'];
+        $filesize = $_FILES['product_img']['size'];
 
+        // $current_img = $_POST['current_img'];
+
+        // $product_img = $_FILES['product_img']['name'];
+        // $filetype = strtolower(pathinfo($product_img, PATHINFO_EXTENSION));
+        // if ($filetype != "jpg" && $filetype != "png" && $filetype != "jpeg") {
+        //     $alert = " Chi chon file jpg, png, jpeg";
+        //     return $alert;
+        // } else {
+       
+            if ($filesize > 1000000) {
+                $alert = " File khong duoc lon hon 1MB";
+                return $alert;
+            } else {
+                move_uploaded_file(
+                    $_FILES['product_img']['tmp_name'],
+                    "../uploads_img/" . $_FILES['product_img']['name']
+                );
+
+                // Test không chọn ảnh
+                // if (!empty($files['product_img']['name'])) {
+                //     $file_name = $files['product_img']['name'];
+                //     $file_temp = $files['product_img']['tmp_name'];
+                //     $div = explode('.', $file_name);
+                //     $file_ext = strtolower(end($div));
+                //     $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+                //     $uploaded_image = "../uploads_img/" . $unique_image;
+        
+                //     move_uploaded_file($file_temp, $uploaded_image);
+                // } else {
+                //     $uploaded_image = $current_img;  // Retain the current image
+                // }
+
+                // 
+                $query = "UPDATE tbl_product SET
+                product_name = '$product_name',
+                category_id = '$category_id',
+                items_id = '$items_id',
+                product_price = '$product_price',
+                product_img = '$fileurl'
+                WHERE product_id = $product_id";
+                $result = $this->db->update($query);
+            }
+        
+        header('Location:productlist.php');
+        return $result;
+    }
+
+    public function delete_product($product_id)
+    {
+        $query = "DELETE FROM tbl_product WHERE product_id = $product_id";
+        $result = $this->db->delete($query);
+        return $result;
+    }
+    // Font_end
     public function get_product_by_id($product_id)
     {
         $query = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, 
@@ -120,51 +165,11 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
-    
 
-    public function update_product($product_id)
+    public function show_product_by_items($items_id)
     {
-        $product_name = $_POST['product_name'];
-        $category_id = $_POST['category_id'];
-        $items_id = $_POST['items_id'];
-        $product_price = $_POST['product_price'];
-        $product_img = $_FILES['product_img']['name'];
-        $file_path = '../uploads_img/';
-        $fileurl = $file_path . $_FILES['product_img']['name'];
-        $filetype = strtolower(pathinfo($product_img, PATHINFO_EXTENSION));
-        $filesize = $_FILES['product_img']['size'];
-
-        // if ($filetype != "jpg" && $filetype != "png" && $filetype != "jpeg") {
-        //     $alert = " Chi chon file jpg, png, jpeg";
-        //     return $alert;
-        // } else {
-        //     if ($filesize > 1000000) {
-        //         $alert = " File khong duoc lon hon 1MB";
-        //         return $alert;
-        //     } else {
-                move_uploaded_file(
-                    $_FILES['product_img']['tmp_name'],
-                    "../uploads_img/" . $_FILES['product_img']['name']
-                );
-
-                $query = "UPDATE tbl_product SET
-                product_name = '$product_name',
-                category_id = '$category_id',
-                items_id = '$items_id',
-                product_price = '$product_price',
-                product_img = '$fileurl'
-                WHERE product_id = $product_id";
-                $result = $this->db->update($query);
-        //     }
-        // }
-        header('Location:productlist.php');
-        return $result;
-    }
-
-    public function delete_product($product_id)
-    {
-        $query = "DELETE FROM tbl_product WHERE product_id = $product_id";
-        $result = $this->db->delete($query);
+        $query = "SELECT * FROM tbl_product WHERE items_id = '$items_id'";
+        $result = $this->db->select($query);
         return $result;
     }
 }

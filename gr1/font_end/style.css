@@ -109,7 +109,7 @@ a{
     display: none;
     position: absolute;
     background-color: #fff;  
-    top: 40px;
+    top: 39px;
     width: 180px;
     left: 5px;
     box-shadow: -3px 3px 6px #ccc;
@@ -144,6 +144,7 @@ a{
     align-items: center;
     text-align: center;
     justify-content: center;
+    border-bottom: 1px solid #ccc;
 }
 
 .dot{
@@ -162,36 +163,39 @@ a{
 /*Container chỗ 3 box trà sữa*/
 
 #container{
-    padding-top: 70px;
-    margin: 0;
+    padding-top: 30px;
     background-color: #ededed;
+    padding-bottom: 12px;
 }
 
 .slide-product-one{
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: center; */
     padding: 0px 120px ;
     margin: 12px;
 }
 
 .slide-product-one h1{
-    padding: 0 30px;
+    padding: 12px 30px;
     font-size: 25px;
 }
 
 /*Cái box của mỗi sp */
 .slider-product-bodyyy-filtering{
+    display: flex;
+    justify-content: center;
     text-align: center;
     display: flex;
     width: 100%;
     margin: 12px;
-    padding: 20px 50px;
+    padding: 0px 50px;
 }
 
 /*Cái khúc trong từng sp ảnh, tên, giá */
 
 .slider-product-bodyyy-filtering .productt-p10{
     margin: 12px;
-    padding: 12px 20px;
+    padding: 10px 20px;
     background-color: #ffffff;
 }
 
@@ -330,11 +334,11 @@ a{
 }
 
 .category-right-top_item{
-    flex: 1;
+    flex: 0.5;
     padding: 0 12px;
 }
 
-.category-right-top_item button{
+/* .category-right-top_item button{
     width: 100%;
     padding: 10px 15px;
     display: flex;
@@ -342,7 +346,7 @@ a{
     background-color: #ffffff;
     border: 1px solid ;
     cursor: pointer;
-}
+} */
 
 .category-right-top_item select{
     width: 100%;
@@ -359,13 +363,16 @@ a{
     justify-content: space-between;
 }
 
+
 .category-right-sp-item{
+    
     position: relative;
     width: calc(25% - 12px) ;
     text-align: center;
     padding: 12px 12px;
     margin-top: 12px;
     background-color: #fff;
+    
 }
 
 .category-right-sp-item h1{
@@ -382,8 +389,6 @@ a{
     padding: 5px 0;
 }
 
-
-
 .category-right-sp-item img{
     width: 100%;
     height: 160px;
@@ -394,6 +399,42 @@ a{
 
 .category-right .category-right-sp .category-right-sp-item:hover{
     box-shadow: 0 0 5px #000000;
+}
+/* Button xem thêm */
+
+.category-right-bottom_item{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.view_product{
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#view-more-button {
+    background-color: rgb(106, 91, 91);
+    border: none;
+    color: white;
+    padding: 10px 17px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#view-more-button:hover {
+    background-color: transparent;
+    color: brown;
+    border: 1px solid brown;
 }
 
 
@@ -807,3 +848,4 @@ type[input="radio"] {
     margin-top: 5px;
   height: 30px;
 }
+
