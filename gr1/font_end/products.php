@@ -14,11 +14,11 @@ $show_product = $product->show_product_by_items($items_id);
 
 <div class="category-right row">
     <div class="category-right-top_item">
-        <p>Danh Mục Sản Phẩm</p>
+        <p>Danh Mục Trà Hoa Quả</p>
     </div>
-    <!-- <div class="category-right-top_item">
+    <div class="category-right-top_item">
         <button><span>Bộ lọc</span><i class="fa-solid fa-sort-down icon-down"></i></button>
-    </div> -->
+    </div>
     <div class="category-right-top_item">
         <select name="" id="">
             <option value="">Sắp xếp</option>
@@ -27,7 +27,6 @@ $show_product = $product->show_product_by_items($items_id);
         </select>
     </div>
     <div class="category-right-sp row">
-
         <?php
         if ($show_product) {
             while ($result = $show_product->fetch_assoc()) {
@@ -36,13 +35,13 @@ $show_product = $product->show_product_by_items($items_id);
                 echo '<img src="' . $result["product_img"] . '" width="200px" height="200px" alt="">';
                 echo '<h1>' . $result["product_name"] . '</h1>';
                 echo '<p>' . $result["product_price"] . '₫</p>';
+                echo '</a>';
                 echo '</div>';
         ?>
         <?php
             }
         }
         ?>
-
     </div>
 </div>
 </div>
