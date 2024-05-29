@@ -5,27 +5,31 @@ include "class/product_class.php";
 ?>
 
 <?php
-$product = new product;
-if (isset($_GET['items_id'])) {
-    $items_id = $_GET['items_id'];
-}
-$show_product = $product->show_product_by_items($items_id);
+    $product = new product;
+    $items_id = isset($_GET['items_id']) ? $_GET['items_id'] : null;
+    $sort_option = isset($_GET['sort']) ? $_GET['sort'] : '';
+
+    $show_product = $product->show_product_by_items($items_id, $sort_option);
 ?>
 
 <div class="category-right row">
     <div class="category-right-top_item">
         <p>Danh Mục Trà Hoa Quả</p>
     </div>
-    <div class="category-right-top_item">
+    <!-- <div class="category-right-top_item">
         <button><span>Bộ lọc</span><i class="fa-solid fa-sort-down icon-down"></i></button>
-    </div>
+    </div> -->
     <div class="category-right-top_item">
-        <select name="" id="">
-            <option value="">Sắp xếp</option>
-            <option value="">Giá cao đến thấp</option>
-            <option value="">Giá thấp đến cao</option>
-        </select>
+        <form method="GET" id="sort-form">
+            <input type="hidden" name="items_id" value="<?php echo htmlspecialchars($items_id); ?>">
+            <select name="sort" id="sort" onchange="document.getElementById('sort-form').submit();">
+                <option value="">Sắp xếp</option>
+                <option value="price_asc" <?php echo $sort_option == 'price_asc' ? 'selected' : ''; ?>>Giá thấp đến cao</option>
+                <option value="price_desc" <?php echo $sort_option == 'price_desc' ? 'selected' : ''; ?>>Giá cao đến thấp</option>
+            </select>
+        </form>
     </div>
+    
     <div class="category-right-sp row">
         <?php
         if ($show_product) {

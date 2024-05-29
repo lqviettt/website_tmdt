@@ -2,25 +2,28 @@
 include "menu.php";
 include "class/product_class.php";
 
-
 $product = new product;
 $product_detail = null;
+$similar_products = null;
+
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $product_id = intval($_GET['id']);
     $product_detail = $product->get_product_by_id($product_id);
+
+    if ($product_detail) {
+        $result = $product_detail->fetch_assoc();
+        $similar_products = $product->get_random_similar_products($result['items_id'], $product_id);
+    }
 }
-$result = $product_detail->fetch_assoc();
 ?>
 
-<section>
+<section id="section">
     <div class="container-product-details">
         <!-- phan dau -->
         <div class="history">
             <?php
             echo '<span class="text1">';
             echo '<a href="products.php?items_id=' . $result['items_id'] . '">' . $result["items_name"] . '<i class="fa-solid fa-angle-right"></i></a>';
-            ?>
-            <?php
             echo '<span class="text2">' . $result["product_name"] . '</span>';
             ?>
         </div>
@@ -59,17 +62,42 @@ $result = $product_detail->fetch_assoc();
             echo '</div>';
             echo '</div>';
             echo '<div class="Btn-muangay">';
-            echo '<a href="./Giohang.html" style="color:#FFF"><b>MUA NGAY</b></a>';
+            echo '<a href=""><b>MUA NGAY</b></a>';
             echo '</div>';
             echo '<div class="Btn-ThemGH">';
-            echo '<a href="" style="color: rgb(244, 140, 140);"><b>Thêm vào giỏ hàng</b></a>';
+            echo '<a href=""><b>Thêm vào giỏ hàng</b></a>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
         }
         ?>
+        <div class="compare-produce">
+            <div class="compare-produce-left">
+                <h1>Sản Phẩm Tương Tự</h1>
+                <div class="compare-product-items row">
+                    <?php
+                    if ($similar_products) {
+                        while ($similar_product = $similar_products->fetch_assoc()) {
+                            echo '<li class="compare-product-left-items">';
+                            echo '<a href="product_detail.php?id=' . $similar_product["product_id"] . '">';
+                            echo '<img src="' . $similar_product["product_img"] . '" width="150px" height="150px" alt="">';
+                            echo '<h2>' . $similar_product["product_name"] . '</h2>';
+                            echo '<p>' . $similar_product["product_price"] . '₫</p>';
+                            echo '</a>';
+                            echo '</li>';
+                        }
+                    }
+                    ?>
+                </div>
+                <div class="view_product">
+                    <a href="products.php?items_id=<?php echo $items_id; ?>"><button id="view-more-button">Xem tất cả</button></a>
+                </div>
+
+            </div>
+        </div>
     </div>
+
 </section>
 
 <?php

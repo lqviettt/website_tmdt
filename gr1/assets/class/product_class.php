@@ -149,12 +149,26 @@ class product
         return $result;
     }
 
-    public function show_product_by_items($items_id)
-    {
+    // public function show_product_by_items($items_id)
+    // {
+    //     $query = "SELECT * FROM tbl_product WHERE items_id = '$items_id'";
+    //     $result = $this->db->select($query);
+    //     return $result;
+    // }
+
+    public function show_product_by_items($items_id, $sort_option = '') {
         $query = "SELECT * FROM tbl_product WHERE items_id = '$items_id'";
+        
+        if ($sort_option == 'price_asc') {
+            $query .= " ORDER BY product_price ASC";
+        } elseif ($sort_option == 'price_desc') {
+            $query .= " ORDER BY product_price DESC";
+        }
+        
         $result = $this->db->select($query);
         return $result;
     }
+    
 
     // Main
     public function get_top_products_by_items($items_id, $limit = 4)
@@ -163,5 +177,17 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
+
+    // product detail
+    public function get_random_similar_products($items_id, $exclude_product_id, $limit = 5) {
+        $query = "SELECT * FROM tbl_product 
+                  WHERE items_id = '$items_id' 
+                  AND product_id != '$exclude_product_id' 
+                  ORDER BY RAND() 
+                  LIMIT $limit";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    
 }
 ?>

@@ -24,11 +24,13 @@
                 <h3>Coffe & Tea</h3>
             </div>
             <div class="logo">
-                <img width="60px" , src="img/Screenshot 2023-09-29 105536.png">
+                <img height="60px" width="60px" , src="../uploads_img/Screenshot 2024-05-29 195433.png">
             </div>
             <div class="search">
-                <input type="text" class="search_input" placeholder="Bạn cần tìm sản phẩm gì?   ">
+                <input type="text" class="search_input" placeholder="Bạn cần tìm sản phẩm gì? "><i class="fa-solid fa-magnifying-glass"></i>
+                
             </div>
+
             <div class="others">
                 <li>
                     <a href="dangnhap.html" class="cart">
