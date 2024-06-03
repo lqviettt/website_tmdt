@@ -10,7 +10,7 @@ $categories = $category->show_category();
     <?php
     if ($categories) {
         while ($show_cate = $categories->fetch_assoc()) {
-            echo '<li><a href="main.php?category_id=' . $show_cate['category_id'].'"> ' . $show_cate['category_name'] . '</a>';
+            echo '<li><a href="home.php?category_id=' . $show_cate['category_id'].'"> ' . $show_cate['category_name'] . '</a>';
             $items = $category->show_items_by_category($show_cate['category_id']);
             if ($items && $show_cate['category_name'] == 'SẢN PHẨM') {
                 echo '<div class="list-box"><ul>';

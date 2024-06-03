@@ -5,6 +5,7 @@ include "class/product_class.php";
 $product = new product;
 $product_detail = null;
 $similar_products = null;
+$items_id = null;
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $product_id = intval($_GET['id']);
@@ -12,6 +13,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     if ($product_detail) {
         $result = $product_detail->fetch_assoc();
+        $items_id = $result['items_id'];
         $similar_products = $product->get_random_similar_products($result['items_id'], $product_id);
     }
 }
@@ -61,15 +63,24 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             echo '<div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>';
             echo '</div>';
             echo '</div>';
-            echo '<div class="Btn-muangay">';
-            echo '<a href=""><b>MUA NGAY</b></a>';
+            echo '<div class="buy">';
+            echo '<a href="cart.php">';
+            echo '<button class="btn-buynow">';
+            echo 'MUA NGAY';
+            echo '</button>';
+            echo '</a>';
             echo '</div>';
-            echo '<div class="Btn-ThemGH">';
-            echo '<a href=""><b>Thêm vào giỏ hàng</b></a>';
+            echo '<div class="buy">';
+            echo '<a href="cart.php">';
+            echo '<button class="btn-buynow">';
+            echo 'THÊM VÀO GIỎ HÀNG';
+            echo '</button>';
+            echo '</a>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
+            
         }
         ?>
         <div class="compare-produce">
@@ -93,11 +104,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <div class="view_product">
                     <a href="products.php?items_id=<?php echo $items_id; ?>"><button id="view-more-button">Xem tất cả</button></a>
                 </div>
-
             </div>
         </div>
     </div>
-
 </section>
 
 <?php

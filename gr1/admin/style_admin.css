@@ -70,7 +70,7 @@ header>h1{
     cursor: pointer;
     background-color: brown;
     border: none;
-    color: white;
+    color: white;   
 }
 
 .admin-content-right-category_add button:hover{

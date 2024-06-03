@@ -11,8 +11,10 @@
     padding: 0 50px;
     height: 70px;
     color: #362727;
-    background-color: rgb(212, 210, 210);
-    border-bottom: 1.5px solid #c7bebe
+    /* background-color: rgb(212, 210, 210); */
+    background-color: #919191;
+
+    border-bottom: 1.5px solid #807a7a
 }
 
 li{
@@ -82,13 +84,14 @@ a{
 
 .h_menu{
     display:flex;
-    background-color: rgb(212, 210, 210);
+    background-color: #919191;
+    /* background-color: rgb(212, 210, 210); */
     height: 37px;
     align-items: center;   
     justify-content: space-between;
     padding: 0 200px;
-    border-bottom: 1.5px solid #c7bebe
-
+    /* border-bottom: 1.5px solid #c7bebe */
+    border-bottom: 1.5px solid #807a7a
 }
 
 .h_menu li{
@@ -230,7 +233,8 @@ a{
 
 /*Footer*/
 .footer {
-    background-color: rgb(212, 210, 210);
+    /* background-color: rgb(212, 210, 210); */
+    background-color: #919191;
     width: 100%;
     height: 300px;
     padding: 40px 40px;
@@ -321,7 +325,8 @@ a{
 }
 
 .category-left ul{
-    padding-top: 70px;
+    padding: 120px 0 0 25px;
+    justify-content: center;
 }
 
 .category-left ul li{
@@ -425,7 +430,7 @@ a{
 }
 
 #view-more-button {
-    background-color: rgb(106, 91, 91);
+    background-color: rgb(171, 95, 60);
     border: none;
     color: white;
     padding: 10px 17px;
@@ -434,7 +439,6 @@ a{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 10px;
 }
 
 #view-more-button:hover {
@@ -535,46 +539,22 @@ a{
     overflow: auto;
 }
 
-.Btn-muangay>a{
-    color: #fff;
-}
-.Btn-ThemGH >a{
-    color: #fff;
+
+.btn-buynow{
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(171, 95, 60);
+    padding: 10px 0;
+    cursor: pointer;
+    margin: 5px;
+    color: white;
+    border: none;
 }
 
-.Btn-muangay {
-    width: 100%;
-    border-radius: 4px;
-    font-size: 18px;
-    color: #fff;
-    text-align: center;
-    /* background: #ff7914;
-    background: linear-gradient(#ff9d14, #ff5214); */
-    background-color: rgb(106, 91, 91);
-    padding: 10px 0;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-.Btn-muangay:hover {
-    background-color: transparent;
-    color: brown;
-    border: 1px solid brown;
-}
-.Btn-ThemGH{
-    width: 100%;
-    border-radius: 20px;
-    font-size: 18px;
-    color: #ffffff;
-    text-align: center;
-    background-color: rgb(106, 91, 91);
-    padding: 10px 0;
-    cursor: pointer;
-    margin-bottom: 10px
-}
-.Btn-ThemGH:hover {
-    background-color: transparent;
-    color: brown;
-    border: 1px solid brown;
+
+.btn-buynow:hover {
+    border: 2px solid rgb(171, 95, 60);
 }
 
 /* sp tuong tu */
@@ -647,27 +627,24 @@ a{
 
 /* Gio Hang */
 .container-cart-product {
-    display: grid;
-    margin: auto;
-    /* text-align: center; */
     background-color: #f0f0f0;
+    display: flex;
+    padding: 50px 90px;
 }
 
 .wrap-payment{
-    width: 42%;
-    margin: 0 auto;
-    display: inline-block;
+    width: 50%;
+    margin:30px 20px ;
     background:#fff;
-    margin-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
-    
+    padding: 30px 30px;
 }
+
 .wrap-payment-head {
     display: flex;
-    margin-top: 36px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f5f5f5;
+    margin-top: 20px;
+    padding: 25px 25px;
+    border-bottom: 1px solid #cecece;
+    border-top: 1px solid #cecece;
 
 }
 .wrap-payment-head-right {
@@ -680,16 +657,73 @@ a{
     font-size: 16px;
     font-weight: 600;
 }
-.khuyenmai {
-    font-family: arial;
-    font-size: 12px;
-    color: #606060;
-    width: 306px;
-    text-align: left;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    line-height: 1rem;
+
+.wrap-payment-head-left {
+    width: 25%;
+    min-height: 100px;
+    text-align: center;
 }
+.clear-product {
+    font-family: arial;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 25px;
+    background: #bbbbbb;
+}
+
+.wrap-payment-body{
+    margin-top: 20px;
+}
+
+.wrap-payment-body input{
+    margin: 10px 0 5px;
+    padding: 9px 0;
+    text-indent: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline-style: none;
+}
+
+.btn-checkout {
+    border-radius: 4px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    background-color: rgb(171, 95, 60);
+    padding: 10px 0;
+}
+
+.back_product{
+    margin-top: 15px;
+}
+
+.back{
+    overflow: hidden;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+    cursor: pointer;
+    width: 40%;
+    font-size: 12px;
+    background-color: rgb(246, 246, 246);
+    border: 1px solid black;
+    padding: 7px 0;
+}
+
+.back:hover{
+    color: white;
+    background-color: black;
+}
+
+.Tong-tien {
+    margin-top: 10px;
+    height: 30px;
+}
+
 .choose-color {
     float: left;
     position: relative;
@@ -736,191 +770,3 @@ a{
     border: 1px solid #dfdfdf;
     cursor: pointer;
 }
-
-.wrap-payment-head-left {
-    width: 25%;
-    min-height: 100px;
-    text-align: center;
-}
-.clear-product {
-    font-family: arial;
-    padding: 6px 15px;
-    color: #fff;
-    border-radius: 25px;
-    background: #bbbbbb;
-}
-.wrap-payment-body input{
-    margin: 10px 0 5px;
-    padding: 9px 0;
-    text-indent: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline-style: none;
-    /* width: 20px; */
-}
-
-.area {
-    overflow: visible;
-    background: #f0f0f0;
-    margin-top: 15px;
-    padding: 20px 20px 15px 20px;
-    position: relative;
-    min-width: 570px;
-    min-height: 125px;
-}
-.citydis {
-    display: block;
-    height: 40px;
-    position: relative;
-    margin-bottom: 5px;
-}
-.city, .ward {
-    float: left;
-    position: relative;
-    width: 42%;
-    border: 1px solid #d9d9d9;
-    background: #fff;
-    border-radius: 3px;
-    font-size: 14px;
-    color: #288ad6;
-    padding: 8px 1.5% 6px;
-}
-.city span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-    width: 88%;
-    cursor: pointer;
-}
-.city:after, .ward:after {
-    content: '';
-    width: 0;
-    right: 0;
-    border-top: 6px solid #288ad6;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 7px 5px 0 0;
-    position: absolute;
-}
-.dist:after {
-    content: '';
-    width: 0;
-    right: 0;
-    border-top: 6px solid #288ad6;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 7px 5px 0 0;
-    position: absolute;
-}
-
-.dist {
-    float: right;
-    position: relative;
-    width: 47%;
-    border: 1px solid #d9d9d9;
-    background: #fff;
-    border-radius: 3px;
-    font-size: 14px;
-    color: #288ad6;
-    padding: 8px 1.5% 6px;
-}
-.dist span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-    width: 88%;
-    cursor: pointer;
-}
-.homenumber {
-    display: block;
-    padding: 9px 0;
-    height: 35px;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    text-indent: 10px;
-    width: 47%;
-    float: right;
-}
-#store-address {
-    margin-top: 20px;
-    background: #fff;
-    padding: 10px;
-    max-height: 280px;
-    overflow-y: scroll;
-}
-.item-market{
-    border-bottom: 1px dotted #c2c2c2;
-    line-height: 30px;
-}
-.item-market label {
-    
-    max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-.radio-btn {
-    width: 100%;
-    margin-left: 0px;
-    cursor: pointer;
-}
-type[input="radio"] {
-    cursor: pointer;
-}
-.btn-buynow {
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-    padding: 9px 0;
-    border-radius: 4px;
-    font-size: 13px !important;
-    font-weight: 600;
-    line-height: normal;
-    color: #fff;
-    text-align: center;
-    background: #fd6e1d;
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fd6e1d), to(#f59000));
-    background: -webkit-linear-gradient(top, #f59000, #fd6e1d);
-    background: -moz-linear-gradient(top, #f59000, #fd6e1d);
-    background: -ms-linear-gradient(top, #f59000, #fd6e1d);
-    background: -o-linear-gradient(top, #f59000, #fd6e1d);
-    text-transform: none;
-    cursor: pointer;
-}
-.btn-buynow, 
-.btn-buynow-online>div{
-    font-size: 12px ;
-    color:fff;
-}
-
-.btn-buynow-online {
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-    padding: 9px 0;
-    border-radius: 4px;
-    font-size: 14px !important;
-    font-weight: 600;
-    line-height: normal;
-    color: #fff;
-    text-align: center;
-    background: #0e74c2;
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0e74c2), to(#288ad6));
-    background: -webkit-linear-gradient(top, #288ad6, #0e74c2);
-    background: -moz-linear-gradient(top, #288ad6, #0e74c2);
-    background: -ms-linear-gradient(top, #288ad6, #0e74c2);
-    background: -o-linear-gradient(top, #288ad6, #0e74c2);
-    text-transform: none;
-    cursor: pointer;
-}
-.Tong-tien {
-    margin-top: 5px;
-  height: 30px;
-}
-
