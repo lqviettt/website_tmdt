@@ -130,6 +130,93 @@ a{
     z-index: 10;
 }
 
+/* Reponsive */
+@media (max-width: 1024px) {
+    .h_top {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+        height: auto;
+    }
+
+    .chao {
+        padding: 10px 0;
+    }
+
+    .logo img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .search {
+        padding: 10px 0;
+    }
+
+    .others {
+        flex-direction: row;
+        padding: 10px 0;
+    }
+
+    .h_menu {
+        padding: 0 50px;
+    }
+
+    .h_menu li {
+        padding: 8px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .h_top {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 10px;
+    }
+
+    .chao, .logo, .search, .others {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .search {
+        order: 1;
+    }
+
+    .others {
+        order: 2;
+    }
+
+    .logo {
+        order: 0;
+    }
+
+    .h_menu {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .h_menu li {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .search_input {
+        font-size: 12px;
+    }
+
+    .h_menu {
+        padding: 0;
+    }
+
+    .h_menu li {
+        padding: 10px 0;
+    }
+}
 
 #Slide{
     overflow: hidden;
@@ -183,8 +270,6 @@ a{
 }
 
 .slide-product-one{
-    /* display: flex;
-    justify-content: center; */
     padding: 0px 120px ;
     margin: 12px;
 }
@@ -230,6 +315,7 @@ a{
     font-weight: 700;
     color: #1f722a;
 }
+
 
 /*Footer*/
 .footer {
@@ -298,8 +384,9 @@ a{
 }
 
 
-/* Trà Sữa */
 
+
+/* products */
 .row{
     display: flex;
     flex-wrap: wrap;
@@ -644,7 +731,7 @@ a{
     margin-top: 20px;
     padding: 25px 25px;
     border-bottom: 1px solid #cecece;
-    border-top: 1px solid #cecece;
+    /* border-top: 1px solid #cecece; */
 
 }
 .wrap-payment-head-right {
@@ -690,10 +777,14 @@ a{
     color: #fff;
     text-align: center;
     cursor: pointer;
-    width: 100%;
+    width: 40%;
     font-size: 18px;
     background-color: rgb(171, 95, 60);
-    padding: 10px 0;
+    padding: 10px 0px;
+}
+
+.checkout{
+    padding-left: 35%;
 }
 
 .back_product{

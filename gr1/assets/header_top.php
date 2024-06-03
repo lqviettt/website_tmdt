@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />
 
     <title>Sản phẩm</title>
+</head>
 
 <body>
     <header>
@@ -24,13 +25,11 @@
                 <h3>Coffe & Tea</h3>
             </div>
             <div class="logo">
-                <img height="60px" width="60px" , src="../uploads_img/Screenshot 2024-05-29 195433.png">
+                <img height="60px" width="60px" src="../uploads_img/Screenshot 2024-05-29 195433.png">
             </div>
             <div class="search">
                 <input type="text" class="search_input" placeholder="Bạn cần tìm sản phẩm gì? "><i class="fa-solid fa-magnifying-glass"></i>
-                
             </div>
-
             <div class="others">
                 <li>
                     <a href="dangnhap.html" class="cart">
@@ -46,3 +45,6 @@
                 </li>
             </div>
         </div>
+    </header>
+</body>
+</html>

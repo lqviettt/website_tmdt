@@ -1,6 +1,9 @@
 <?php
 include "menu.php";
 include "class/product_class.php";
+include "session.php";  // Include session management
+
+Session::init();
 
 $product = new product;
 $product_detail = null;
@@ -17,6 +20,43 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         $similar_products = $product->get_random_similar_products($result['items_id'], $product_id);
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
+    $product_id = $_POST['product_id'];
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_img = $_POST['product_img'];
+
+    $product = [
+        'product_id' => $product_id,
+        'product_name' => $product_name,
+        'product_price' => $product_price,
+        'product_img' => $product_img,
+        'quantity' => 1
+    ];
+
+    $cart = Session::get('cart');
+    if (!$cart) {
+        $cart = [];
+    }
+
+    if (isset($cart[$product_id])) {
+        $cart[$product_id]['quantity'] += 1;
+    } else {
+        $cart[$product_id] = $product;
+    }
+
+    Session::set('cart', $cart);
+
+    if (isset($_POST['action']) && $_POST['action'] == 'buy_now'){
+        header("Location: cart.php");
+        exit();
+    }
+    if (isset($_POST['action']) && $_POST['action'] == 'add_to_cart'){
+        header("Location: cart.php");
+        exit();
+    }
+}
 ?>
 
 <section id="section">
@@ -24,9 +64,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <!-- phan dau -->
         <div class="history">
             <?php
-            echo '<span class="text1">';
-            echo '<a href="products.php?items_id=' . $result['items_id'] . '">' . $result["items_name"] . '<i class="fa-solid fa-angle-right"></i></a>';
-            echo '<span class="text2">' . $result["product_name"] . '</span>';
+            if ($product_detail) {
+                echo '<span class="text1">';
+                echo '<a href="products.php?items_id=' . $result['items_id'] . '">' . $result["items_name"] . '<i class="fa-solid fa-angle-right"></i></a>';
+                echo '<span class="text2">' . $result["product_name"] . '</span>';
+            }
             ?>
         </div>
 
@@ -64,23 +106,26 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             echo '</div>';
             echo '</div>';
             echo '<div class="buy">';
-            echo '<a href="cart.php">';
-            echo '<button class="btn-buynow">';
-            echo 'MUA NGAY';
-            echo '</button>';
-            echo '</a>';
+            echo '<form action="product_detail.php?id=' . $product_id . '" method="post">';
+            echo '<input type="hidden" name="product_id" value="' . $result['product_id'] . '">';
+            echo '<input type="hidden" name="product_name" value="' . $result['product_name'] . '">';
+            echo '<input type="hidden" name="product_price" value="' . $result['product_price'] . '">';
+            echo '<input type="hidden" name="product_img" value="' . $result['product_img'] . '">';
+            echo '<button type="submit" name="action" value="buy_now" class="btn-buynow">MUA NGAY</button>';
+            echo '</form>';
             echo '</div>';
             echo '<div class="buy">';
-            echo '<a href="cart.php">';
-            echo '<button class="btn-buynow">';
-            echo 'THÊM VÀO GIỎ HÀNG';
-            echo '</button>';
-            echo '</a>';
+            echo '<form action="product_detail.php?id=' . $product_id . '" method="post">';
+            echo '<input type="hidden" name="product_id" value="' . $result['product_id'] . '">';
+            echo '<input type="hidden" name="product_name" value="' . $result['product_name'] . '">';
+            echo '<input type="hidden" name="product_price" value="' . $result['product_price'] . '">';
+            echo '<input type="hidden" name="product_img" value="' . $result['product_img'] . '">';
+            echo '<button type="submit" name="action" value="add_to_cart" class="btn-buynow">THÊM VÀO GIỎ HÀNG</button>';
+            echo '</form>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
-            
         }
         ?>
         <div class="compare-produce">
