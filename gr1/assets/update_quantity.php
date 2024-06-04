@@ -1,24 +1,25 @@
 <?php
-include "session.php";  // Bao gồm quản lý phiên làm việc
+include "session.php";  // Include session management
 
 Session::init();
 $cart = Session::get('cart') ? Session::get('cart') : [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productId = $_POST['product_id'];
+    $newQuantity = $_POST['quantity'];
 
-    // Xóa sản phẩm khỏi giỏ hàng
-    foreach ($cart as $key => $item) {
+    // Update the quantity in the cart
+    foreach ($cart as &$item) {
         if ($item['product_id'] == $productId) {
-            unset($cart[$key]);
+            $item['quantity'] = $newQuantity;
             break;
         }
     }
 
-    // Lưu lại giỏ hàng đã cập nhật vào phiên làm việc
-    Session::set('cart', array_values($cart));  // Sử dụng array_values để làm lại các key của mảng
+    // Save the updated cart back to the session
+    Session::set('cart', $cart);
 
-    // Tính lại tổng tiền
+    // Recalculate the total
     $total = 0;
     foreach ($cart as $item) {
         $total += $item['product_price'] * $item['quantity'];

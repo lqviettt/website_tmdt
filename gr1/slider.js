@@ -22,3 +22,6 @@ function slider(index){
     dotItem[index].classList.add("active")
 }
 setInterval(imgSlide,3000)
+
+
+//

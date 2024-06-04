@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
 
 <section id="section">
     <div class="container-product-details">
-        <!-- phan dau -->
         <div class="history">
             <?php
             if ($product_detail) {
