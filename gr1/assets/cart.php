@@ -1,6 +1,6 @@
 <?php
 include "menu.php";
-include "session.php";  // Include session management
+include  "session.php";  // Include session management
 
 Session::init();
 

@@ -15,7 +15,7 @@
     /* background-color: rgb(212, 210, 210); */
     /* background-color: #919191; */
 
-    border-bottom: 1.5px solid #807a7a
+    border-bottom: 1.5px solid #a19a9a
 }
 
 li{
@@ -92,7 +92,7 @@ a{
     justify-content: space-between;
     padding: 0 200px;
     /* border-bottom: 1.5px solid #c7bebe */
-    border-bottom: 1.5px solid #807a7a
+    border-bottom: 1.5px solid #a19a9a
 }
 
 .h_menu li{
