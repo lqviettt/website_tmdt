@@ -88,10 +88,10 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
             <table style="width:100%;">
                 <tr>
                     <td colspan="2" style="float: left; margin-bottom: 15px;">
-                        <input type="checkbox" id="checkbox1" name="checkbox1" checked="checked" value="1">
-                        <label for="checkbox1">Anh</label>
-                        <input type="checkbox" id="checkbox2" name="checkbox2" value="0">
-                        <label for="checkbox2">Chị</label>
+                        <input type="radio" id="radio1" name="gender" value="1" checked="checked">
+                        <label for="radio1">Anh</label>
+                        <input type="radio" id="radio2" name="gender" value="0">
+                        <label for="radio2">Chị</label>
                     </td>
                 </tr>
                 <tr>
@@ -141,73 +141,5 @@ include "footer.php";
 ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    // Xử lý tăng số lượng sản phẩm
-    $('.plus').on('click', function() {
-        var quantityDiv = $(this).siblings('.number');
-        var quantity = parseInt(quantityDiv.text());
-        var productId = $(this).closest('.wrap-payment-head').data('product-id');
-        updateQuantity(productId, quantity + 1, quantityDiv);
-    });
+<script src="../JS/cart.js"></script>
 
-    // Xử lý giảm số lượng sản phẩm
-    $('.minus').on('click', function() {
-        var quantityDiv = $(this).siblings('.number');
-        var quantity = parseInt(quantityDiv.text());
-        if (quantity > 1) {
-            var productId = $(this).closest('.wrap-payment-head').data('product-id');
-            updateQuantity(productId, quantity - 1, quantityDiv);
-        }
-    });
-
-    // Hàm cập nhật số lượng sản phẩm
-    function updateQuantity(productId, newQuantity, quantityDiv) {
-        $.ajax({
-            url: 'update_quantity.php',
-            type: 'POST',
-            data: { product_id: productId, quantity: newQuantity },
-            success: function(response) {
-                var data = JSON.parse(response);
-                if (data.success) {
-                    quantityDiv.text(newQuantity);
-                    $('.tongtien').text(data.total + '.000₫');
-                } else {
-                    alert('Failed to update quantity.');
-                }
-            },
-            error: function() {
-                alert('An error occurred while updating the quantity.');
-            }
-        });
-    }
-
-    // Xử lý xóa sản phẩm khỏi giỏ hàng
-    $('.clear-product').on('click', function(event) {
-        event.preventDefault();  // Ngăn chặn hành vi mặc định của liên kết
-        var productId = $(this).closest('.wrap-payment-head').data('product-id');
-        removeFromCart(productId, $(this).closest('.wrap-payment-head'));
-    });
-
-    // Hàm xóa sản phẩm khỏi giỏ hàng
-    function removeFromCart(productId, productDiv) {
-        $.ajax({
-            url: 'remove_from_cart.php',
-            type: 'POST',
-            data: { product_id: productId },
-            success: function(response) {
-                var data = JSON.parse(response);
-                if (data.success) {
-                    productDiv.remove();
-                    $('.tongtien').text(data.total + '.000₫');
-                } else {
-                    alert('Failed to remove product.');
-                }
-            },
-            error: function() {
-                alert('An error occurred while removing the product.');
-            }
-        });
-    }
-});
-</script>

@@ -117,7 +117,7 @@ include "class/product_class.php";
 </section>
 
 
-<script src="../slider.js"></script>
+<script src="../JS/slider.js"></script>
 
 <?php
 include "footer.php";

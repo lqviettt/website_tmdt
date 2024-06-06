@@ -741,10 +741,9 @@ a{
 .wrap-payment-head-right {
     width: 75%;
     min-height: 100px;
-    padding-left: 20px;
+    padding-left: 15px;
 }
 .wrap-payment-head-right-title {
-    text-align: center;
     font-size: 16px;
     font-weight: 600;
 }
