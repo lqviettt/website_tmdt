@@ -717,14 +717,15 @@ a{
 
 
 /* Gio Hang */
-.container-cart-product {
+.container-cart-product{
     background-color: #f0f0f0;
+    /* background-color: #1f722a; */
     display: flex;
     padding: 50px 90px;
 }
 
 .wrap-payment{
-    width: 50%;
+    width: 80%;
     margin:30px 20px ;
     background:#fff;
     padding: 30px 30px;

@@ -10,9 +10,10 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 
 <div class="container-cart-product">
     <div class="wrap-payment">
-        <form action="cart.php" method="post">
+        <form action="./class/order_class.php" method="post">
             <h3>Thông tin giỏ hàng</h3>
             <?php foreach ($cart as $item) : ?>
+                <!-- Phần hiển thị sản phẩm trong giỏ hàng -->
                 <div class="wrap-payment-head" data-product-id="<?php echo $item['product_id']; ?>">
                     <div class="wrap-payment-head-left">
                         <img src="<?php echo $item['product_img']; ?>" alt="" style="width:150px; padding-bottom: 20px;">
@@ -46,91 +47,95 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                     </div>
                 </div>
             <?php endforeach; ?>
+
+            <div class="Tinhtien">
+                <div class="Tong-tien">
+                    <span>Tổng tiền</span>
+                    <div class="price" style="float: right;">
+                        <p class="tongtien">
+                            <?php
+                            $total = 0;
+                            foreach ($cart as $item) {
+                                $total += $item['product_price'] * $item['quantity'];
+                            }
+                            echo $total;
+                            ?>.000₫
+                        </p>
+                    </div>
+                </div>
+                <div class="Can-thanh-toan">
+                    <span>Cần thanh toán</span>
+                    <div class="price" style="float: right;">
+                        <p class="tongtien"><?php echo $total; ?>.000₫</p>
+                    </div>
+                </div>
+            </div>
+            <div class="back_product">
+                <?php
+                $items_id = 25;
+                echo '<a href="products.php?items_id=' . $items_id . '">';
+                echo '<button class="back">';
+                echo '<i class="fa-solid fa-arrow-left"></i>';
+                echo 'TIẾP TỤC MUA HÀNG';
+                echo '</button>';
+                echo '</a>';
+                ?>
+            </div>
         </form>
-        <div class="Tinhtien">
-            <div class="Tong-tien">
-                <span>Tổng tiền</span>
-                <div class="price" style="float: right;">
-                    <p class="tongtien">
-                        <?php
-                        $total = 0;
-                        foreach ($cart as $item) {
-                            $total += $item['product_price'] * $item['quantity'];
-                        }
-                        echo $total;
-                        ?>.000₫
-                    </p>
-                </div>
-            </div>
-            <div class="Can-thanh-toan">
-                <span>Cần thanh toán</span>
-                <div class="price" style="float: right;">
-                    <p class="tongtien"><?php echo $total; ?>.000₫</p>
-                </div>
-            </div>
-        </div>
-        <div class="back_product">
-            <?php
-            $items_id = 25;
-            echo '<a href="products.php?items_id=' . $items_id . '">';
-            echo '<button class="back">';
-            echo '<i class="fa-solid fa-arrow-left"></i>';
-            echo 'TIẾP TỤC MUA HÀNG';
-            echo '</button>';
-            echo '</a>';
-            ?>
-        </div>
     </div>
 
+
     <div class="wrap-payment">
-        <h3>Thông tin thanh toán</h3>
-        <div class="wrap-payment-body">
-            <table style="width:100%;">
-                <tr>
-                    <td colspan="2" style="float: left; margin-bottom: 15px;">
-                        <input type="radio" id="radio1" name="gender" value="1" checked="checked">
-                        <label for="radio1">Anh</label>
-                        <input type="radio" id="radio2" name="gender" value="0">
-                        <label for="radio2">Chị</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" placeholder="Họ và tên (*)" id="name" style="width:95%; float: left;" class="form-control" onblur="checkName()">
-                        <div id="nameError" style="display:none; color:red;">Vui lòng nhập tên!</div>
-                    </td>
-                    <td>
-                        <input type="text" placeholder="Số điện thoại (*)" id="number" style="width:95%; float: right;" class="form-control" onblur="checkNumber()">
-                        <div id="numberError" style="display:none; color:red;">Vui lòng nhập số điện thoại!</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="text" placeholder="Email" style="width: 100%;" id="email" class="form-control" onblur="checkEmail()">
-                        <div id="emailError" style="display:none; color:red;">Vui lòng nhập email!</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="text" placeholder="Địa chỉ" style="width: 100%;" id="address">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="text" placeholder="Yêu cầu khác (không bắt buộc)" style="width: 100%;">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="checkout" style="margin-top: 15px;">
-                            <button class="btn-checkout" onclick="check()" value="submit">
-                                THANH TOÁN
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <form action="./class/order_class.php" method="post">
+            <h3>Thông tin thanh toán</h3>
+            <div class="wrap-payment-body">
+                <table style="width:100%;">
+                    <tr>
+                        <td colspan="2" style="float: left; margin-bottom: 15px;">
+                            <input type="radio" id="radio1" name="gender" value="1" checked="checked">
+                            <label for="radio1">Anh</label>
+                            <input type="radio" id="radio2" name="gender" value="0">
+                            <label for="radio2">Chị</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="name" placeholder="Họ và tên (*)" id="name" style="width:95%; float: left;" class="form-control" onblur="checkName()">
+                            <div id="nameError" style="display:none; color:red;">Vui lòng nhập tên!</div>
+                        </td>
+                        <td>
+                            <input type="text" name="number" placeholder="Số điện thoại (*)" id="number" style="width:95%; float: right;" class="form-control" onblur="checkNumber()">
+                            <div id="numberError" style="display:none; color:red;">Vui lòng nhập số điện thoại!</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="text" name="email" placeholder="Email" style="width: 100%;" id="email" class="form-control" onblur="checkEmail()">
+                            <div id="emailError" style="display:none; color:red;">Vui lòng nhập email!</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="text" name="address" placeholder="Địa chỉ" style="width: 100%;" id="address">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="text" placeholder="Yêu cầu khác (không bắt buộc)" style="width: 100%;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="checkout" style="margin-top: 15px;">
+                                <button type="submit" class="btn-checkout" value="submit">
+                                    THANH TOÁN
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -142,4 +147,3 @@ include "footer.php";
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../JS/cart.js"></script>
-
