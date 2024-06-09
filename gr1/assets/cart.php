@@ -10,7 +10,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 
 <div class="container-cart-product">
     <div class="wrap-payment">
-        <form action="./class/order_class.php" method="post">
+        <form action="order_class.php" method="post">
             <h3>Thông tin giỏ hàng</h3>
             <?php foreach ($cart as $item) : ?>
                 <!-- Phần hiển thị sản phẩm trong giỏ hàng -->
@@ -86,15 +86,15 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 
 
     <div class="wrap-payment">
-        <form action="./class/order_class.php" method="post">
+        <form action="order_class.php" method="post">
             <h3>Thông tin thanh toán</h3>
             <div class="wrap-payment-body">
                 <table style="width:100%;">
                     <tr>
                         <td colspan="2" style="float: left; margin-bottom: 15px;">
-                            <input type="radio" id="radio1" name="gender" value="1" checked="checked">
+                            <input type="radio" id="gender" name="gender" value="1" checked="checked">
                             <label for="radio1">Anh</label>
-                            <input type="radio" id="radio2" name="gender" value="0">
+                            <input type="radio" id="gender" name="gender" value="0">
                             <label for="radio2">Chị</label>
                         </td>
                     </tr>

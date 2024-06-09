@@ -1,6 +1,6 @@
 <?php
-require_once "database.php"; // Đường dẫn tuyệt đối đến database.php
-require_once "session.php";  // Đường dẫn tuyệt đối đến session.php
+require_once "database.php"; 
+require_once "session.php"; 
 
 Session::init();
 
@@ -34,9 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Thêm chi tiết đơn hàng vào bảng order_items
         foreach ($cart as $item) {
             $product_id = $item['product_id'];
+            $product_name = $item['product_name'];
             $quantity = $item['quantity'];
             $price = $item['product_price'];
-            $query = "INSERT INTO tbl_order_product (order_id, product_id, quantity, price) VALUES ('$order_id', '$product_id', '$quantity', '$price')";
+            $query = "INSERT INTO tbl_order_product (order_id, product_id, product_name, quantity, price) VALUES ('$order_id', '$product_id', '$product_name', '$quantity', '$price')";
             $db->insert($query);
         }
 
