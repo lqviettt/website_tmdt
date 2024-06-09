@@ -146,4 +146,50 @@ include "footer.php";
 ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function checkName() {
+        var name = document.getElementById('name').value;
+        var nameError = document.getElementById('nameError');
+        var namePattern = /^[a-zA-Z\s]+$/;
+
+        if (!namePattern.test(name) || name.trim() === '') {
+            nameError.style.display = 'block';
+            nameError.textContent = 'Tên không được chứa số hoặc ký tự đặc biệt và không được để trống!';
+            return false;
+        } else {
+            nameError.style.display = 'none';
+            return true;
+        }
+    }
+
+    function checkNumber() {
+        var number = document.getElementById('number').value;
+        var numberError = document.getElementById('numberError');
+        var phonePattern = /^[0-9]{10}$/; // Điều chỉnh theo định dạng số điện thoại phù hợp
+
+        if (!phonePattern.test(number)) {
+            numberError.style.display = 'block';
+            return false;
+        } else {
+            numberError.style.display = 'none';
+            return true;
+        }
+    }
+
+    function checkEmail() {
+        var email = document.getElementById('email').value;
+        var emailError = document.getElementById('emailError');
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        if (!emailPattern.test(email)) {
+            emailError.style.display = 'block';
+            return false;
+        } else {
+            emailError.style.display = 'none';
+            return true;
+        }
+    }
+</script>
+
+
 <script src="../JS/cart.js"></script>
