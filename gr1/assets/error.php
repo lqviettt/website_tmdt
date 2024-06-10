@@ -5,5 +5,5 @@ if (isset($_GET['message'])) {
 } else {
     echo "<h2>Đã xảy ra lỗi không xác định!</h2>";
 }
-echo "<a href='index.php'>Quay lại trang chủ</a>";
+echo "<a href='home.php'>Quay lại trang chủ</a>";
 ?>

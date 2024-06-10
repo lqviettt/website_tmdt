@@ -101,17 +101,17 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                     <tr>
                         <td>
                             <input type="text" name="name" placeholder="Họ và tên (*)" id="name" style="width:95%; float: left;" class="form-control" onblur="checkName()">
-                            <div id="nameError" style="display:none; color:red;">Vui lòng nhập tên!</div>
+                            <div id="nameError" style="display:none; color:red; font-size:12px;">Tên không được chứa số hoặc ký tự đặc biệt và không được để trống!</div>
                         </td>
                         <td>
                             <input type="text" name="number" placeholder="Số điện thoại (*)" id="number" style="width:95%; float: right;" class="form-control" onblur="checkNumber()">
-                            <div id="numberError" style="display:none; color:red;">Vui lòng nhập số điện thoại!</div>
+                            <div id="numberError" style="display:none; color:red; font-size:12px;">Vui lòng nhập đúng định dạng!</div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <input type="text" name="email" placeholder="Email" style="width: 100%;" id="email" class="form-control" onblur="checkEmail()">
-                            <div id="emailError" style="display:none; color:red;">Vui lòng nhập email!</div>
+                            <div id="emailError" style="display:none; color:red; font-size:12px;">Email sai định dạng, xin vui lòng nhập lại!</div>
                         </td>
                     </tr>
                     <tr>
@@ -154,7 +154,6 @@ include "footer.php";
 
         if (!namePattern.test(name) || name.trim() === '') {
             nameError.style.display = 'block';
-            nameError.textContent = 'Tên không được chứa số hoặc ký tự đặc biệt và không được để trống!';
             return false;
         } else {
             nameError.style.display = 'none';
@@ -187,6 +186,18 @@ include "footer.php";
         } else {
             emailError.style.display = 'none';
             return true;
+        }
+    }
+
+    function validateForm() {
+        var isNameValid = checkName();
+        var isNumberValid = checkNumber();
+        var isEmailValid = checkEmail();
+
+        if (isNameValid && isNumberValid && isEmailValid) {
+            return true;
+        } else {
+            return false;
         }
     }
 </script>
