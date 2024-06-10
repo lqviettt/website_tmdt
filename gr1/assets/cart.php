@@ -86,7 +86,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 
 
     <div class="wrap-payment">
-        <form action="order_class.php" method="post">
+        <form action="order_class.php" method="post" onsubmit="return validateForm(event);">
             <h3>Thông tin thanh toán</h3>
             <div class="wrap-payment-body">
                 <table style="width:100%;">
@@ -127,9 +127,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                     <tr>
                         <td colspan="2">
                             <div class="checkout" style="margin-top: 15px;">
-                                <button type="submit" class="btn-checkout" value="submit">
-                                    THANH TOÁN
-                                </button>
+                                <button type="submit" class="btn-checkout" >ĐẶT HÀNG</button>
                             </div>
                         </td>
                     </tr>
@@ -164,7 +162,7 @@ include "footer.php";
     function checkNumber() {
         var number = document.getElementById('number').value;
         var numberError = document.getElementById('numberError');
-        var phonePattern = /^[0-9]{10}$/; // Điều chỉnh theo định dạng số điện thoại phù hợp
+        var phonePattern = /^[0-9]{10}$/; 
 
         if (!phonePattern.test(number)) {
             numberError.style.display = 'block';
@@ -189,16 +187,16 @@ include "footer.php";
         }
     }
 
-    function validateForm() {
+    function validateForm(event) {
         var isNameValid = checkName();
         var isNumberValid = checkNumber();
         var isEmailValid = checkEmail();
 
-        if (isNameValid && isNumberValid && isEmailValid) {
-            return true;
-        } else {
+        if (!isNameValid || !isNumberValid || !isEmailValid) {
+            event.preventDefault(); // Ngăn chặn gửi form nếu có lỗi
             return false;
         }
+        return true;
     }
 </script>
 
