@@ -70,18 +70,17 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                     </div>
                 </div>
             </div>
-            <div class="back_product">
-                <?php
-                $items_id = 25;
-                echo '<a href="products.php?items_id=' . $items_id . '">';
-                echo '<button class="back">';
-                echo '<i class="fa-solid fa-arrow-left"></i>';
-                echo 'TIẾP TỤC MUA HÀNG';
-                echo '</button>';
-                echo '</a>';
-                ?>
-            </div>
         </form>
+        <div class="back_product">
+            <?php $items_id = 25; ?>
+            <a href="products.php?items_id=<?= $items_id; ?>">
+                <button class="back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    TIẾP TỤC MUA HÀNG
+                </button>
+            </a>
+</div>
+
     </div>
 
 
