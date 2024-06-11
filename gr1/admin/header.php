@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Muc San Pham</title>
+    <title>ADMIN</title>
     <link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
     <header>
-        <h1>Quản Lý Sản Phẩm</h1>
+        <h1>ADMIN</h1>
     </header>

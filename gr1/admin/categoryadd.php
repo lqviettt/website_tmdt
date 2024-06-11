@@ -12,7 +12,7 @@ include "class/category_class.php";
     }
 ?>
 
-<div class="admin-content-right">
+        <div class="admin-content-right">
             <div class="admin-content-right-category_add">
                 <h1>Thêm danh mục</h1>
                 <form action="" method="POST">

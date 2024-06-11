@@ -1,4 +1,17 @@
-<section class="admin-content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="style_admin.css">
+</head>
+<body>
+    <header>
+        <h1>ADMIN</h1>
+    </header>
+
+    <section class="admin-content">
         <div class="admin-content-left">
             <ul>
                 <li><a href="#" class="toggle" data-target="qlsp">QUẢN LÝ SẢN PHẨM</a>
@@ -43,3 +56,17 @@
                 </li>
             </ul>
         </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function(event) {
+                event.preventDefault();
+                var targetClass = toggle.getAttribute('data-target');
+                var targetElement = document.querySelector('.' + targetClass);
+                targetElement.style.display = (targetElement.style.display === 'none' || targetElement.style.display === '') ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

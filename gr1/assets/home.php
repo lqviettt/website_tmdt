@@ -7,7 +7,7 @@ include "class/product_class.php";
     $product = new product;
     $cf_items_id = 25;
     $tsua_items_id = 28;
-    $tea_items_id = 29;
+    $tea_items_id = 31;
     $coffee_products = $product->get_top_products_by_items($cf_items_id);
     $milk_tea_products = $product->get_top_products_by_items($tsua_items_id);
     $tea_products = $product->get_top_products_by_items($tea_items_id);
