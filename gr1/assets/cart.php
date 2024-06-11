@@ -10,6 +10,18 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 
 <div class="container-cart-product">
     <div class="wrap-payment">
+        <?php if (empty($cart)): ?>
+                <h3>Giỏ hàng của bạn đang trống!</h3>
+                <div class="back_product">
+                    <?php $items_id = 25; ?>
+                    <a href="products.php?items_id=<?= $items_id; ?>">
+                        <button class="back">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            QUAY LẠI MUA HÀNG
+                        </button>
+                    </a>
+                </div>
+            <?php else: ?>
                 <form action="order_class.php" method="post">
                     <h3>Thông tin giỏ hàng</h3>
                     <?php foreach ($cart as $item) : ?>
@@ -17,7 +29,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                         <div class="wrap-payment-head" data-product-id="<?php echo $item['product_id']; ?>">
                             <div class="wrap-payment-head-left">
                                 <img src="<?php echo $item['product_img']; ?>" alt="" style="width:150px; padding-bottom: 20px;">
-                                <a href="remove_test.php?product_id=<?php echo $item['product_id']; ?>" class="clear-product">XÓA</a>
+                                <a href="remove_from_cart.php?product_id=<?php echo $item['product_id']; ?>" class="clear-product">XÓA</a>
                             </div>
                             <div class="wrap-payment-head-right">
                                 <div class="" style="height:65px;">
@@ -71,17 +83,19 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                         </div>
                     </div>
                 </form>
-        <div class="back_product">
-            <?php $items_id = 25; ?>
-            <a href="products.php?items_id=<?= $items_id; ?>">
-                <button class="back">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    TIẾP TỤC MUA HÀNG
-                </button>
-            </a>
-        </div>
+                <div class="back_product">
+                    <?php $items_id = 25; ?>
+                    <a href="products.php?items_id=<?= $items_id; ?>">
+                        <button class="back">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            TIẾP TỤC MUA HÀNG
+                        </button>
+                    </a>
+                </div>
+        <?php endif; ?>
     </div>
->
+
+    <?php if (!empty($cart)): ?>
         <div class="wrap-payment">
             <form action="order_class.php" method="post" onsubmit="return validateForm(event);">
                 <h3>Thông tin thanh toán</h3>
@@ -118,7 +132,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="text" placeholder="Yêu cầu khác (không bắt buộc)" style="width: 100%;">
+                                <input type="text" name="others" placeholder="Yêu cầu khác (không bắt buộc)" style="width: 100%;" id="others">
                             </td>
                         </tr>
                         <tr>
@@ -132,11 +146,12 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                 </div>
             </form>
         </div>
+    <?php endif; ?>
 </div>
 
 <?php
 include "footer.php";
 ?>
 
-<script src="../JS/cart.js"></script>
 <script src="../JS/checkinput.js"></script>
+<script src="../JS/cart.js"></script>

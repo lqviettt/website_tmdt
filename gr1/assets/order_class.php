@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $customer_phone = $_POST['number'];
     $customer_email = $_POST['email'];
     $customer_address = $_POST['address'];
+    $order_others = $_POST['others'];
     $gender = $_POST['gender'];
     $total_amount = 0;
 
@@ -26,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         // Thêm đơn hàng vào bảng orders
-        $query = "INSERT INTO tbl_orders (order_date, total_amount, customer_name, customer_phone, customer_email, customer_address, gender) 
-                  VALUES ('$order_date', '$total_amount', '$customer_name', '$customer_phone', '$customer_email', '$customer_address', '$gender')";
+        $query = "INSERT INTO tbl_orders (order_date, total_amount, customer_name, customer_phone, customer_email, customer_address, order_others, gender) 
+                  VALUES ('$order_date', '$total_amount', '$customer_name', '$customer_phone', '$customer_email', '$customer_address', '$order_others', '$gender')";
         $db->insert($query);
         $order_id = $db->link->insert_id;
 
