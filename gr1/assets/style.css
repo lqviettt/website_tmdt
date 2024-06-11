@@ -760,6 +760,7 @@ a{
     color: #fff;
     border-radius: 25px;
     background: #bbbbbb;
+    pointer-events: none;
 }
 
 .wrap-payment-body{

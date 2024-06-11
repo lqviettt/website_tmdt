@@ -42,11 +42,4 @@ $(document).ready(function() {
         });
     }
 
-    // Xử lý xóa sản phẩm khỏi giỏ hàng
-    $('.clear-product').on('click', function(event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
-        var productId = $(this).closest('.wrap-payment-head').data('product-id');
-        removeFromCart(productId, $(this).closest('.wrap-payment-head'));
-    });
-
 });

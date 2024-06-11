@@ -10,6 +10,9 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 
 <div class="container-cart-product">
     <div class="wrap-payment">
+        <?php if (empty($cart)): ?>
+                <h3>Giỏ hàng của bạn đang trống!</h3>
+            <?php else: ?>
                 <form action="order_class.php" method="post">
                     <h3>Thông tin giỏ hàng</h3>
                     <?php foreach ($cart as $item) : ?>
@@ -17,7 +20,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                         <div class="wrap-payment-head" data-product-id="<?php echo $item['product_id']; ?>">
                             <div class="wrap-payment-head-left">
                                 <img src="<?php echo $item['product_img']; ?>" alt="" style="width:150px; padding-bottom: 20px;">
-                                <a href="remove_test.php?product_id=<?php echo $item['product_id']; ?>" class="clear-product">XÓA</a>
+                                <a href="remove_from_cart.php?product_id=<?php echo $item['product_id']; ?>" class="clear-product">XÓA</a>
                             </div>
                             <div class="wrap-payment-head-right">
                                 <div class="" style="height:65px;">
@@ -71,6 +74,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                         </div>
                     </div>
                 </form>
+        <?php endif; ?>
         <div class="back_product">
             <?php $items_id = 25; ?>
             <a href="products.php?items_id=<?= $items_id; ?>">
@@ -81,7 +85,8 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
             </a>
         </div>
     </div>
->
+
+    <?php if (!empty($cart)): ?>
         <div class="wrap-payment">
             <form action="order_class.php" method="post" onsubmit="return validateForm(event);">
                 <h3>Thông tin thanh toán</h3>
@@ -132,11 +137,12 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                 </div>
             </form>
         </div>
+    <?php endif; ?>
 </div>
 
 <?php
 include "footer.php";
 ?>
 
-<script src="../JS/cart.js"></script>
 <script src="../JS/checkinput.js"></script>
+<script src="../JS/cart.js"></script>
