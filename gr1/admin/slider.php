@@ -3,7 +3,7 @@
             <ul>
                 <li><a href="">Danh mục</a>
                     <ul>
-                        <li><a href="categoryadd.php">Thêm danh mục</a></li>
+                        <li><a href="index.php">Thêm danh mục</a></li>
                         <li><a href="categorylist.php">Danh sách danh mục</a></li>
                     </ul>
                 </li>
