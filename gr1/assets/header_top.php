@@ -22,7 +22,7 @@
     <header>
         <div class="h_top">
             <div class="chao">
-                <h3>Coffe & Tea</h3>
+                <h3>Capyy Coffe&Tea</h3>
             </div>
             <div class="logo">
                 <img height="60px" width="60px" src="../uploads_img/Screenshot 2024-05-29 195433.png">
