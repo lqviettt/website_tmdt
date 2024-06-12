@@ -16,24 +16,12 @@
                  <p>Đổi trả và hoàn tiền</p>
                  <p>Bảo vệ thông tin cá nhân</p>
                  <p>Cơ sở gần nhất</p>
-
              </li>
 
              <li>
-                 <div class="social-logo">
-                     <a href="">
-                         <img src="./assets/img/New folder/trangchu-icon2-tiktok-031122.png" alt="" class="icon">
-                     </a>
-                     <a href="https://www.facebook.com/Quoccviettt">
-                         <img src="./assets/img/New folder/facebook.jpg" alt="" class="icon">
-                     </a>
-                     <a href="">
-                         <img src="./assets/img/New folder/youtube.jpg" alt="" style="width:50px ; margin-right: 26px;">
-                     </a>
-                     <a href="">
-                         <img src="./assets/img/New folder/insta.webp" alt="" class="icon">
-                     </a>
-                 </div>
+                <a href="facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                <a href="tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="instagram.com"><i class="fa-brands fa-instagram"></i></a>
              </li>
          </ul>
      </div>
@@ -44,5 +32,4 @@
  </footer>
  </body>
  </head>
-
  </html>

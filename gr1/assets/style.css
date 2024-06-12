@@ -334,24 +334,27 @@ a{
     margin-right: 10%;
     margin-left: 10%;
     text-align: center;
-
 }
-.footer-content ul {
-    margin-bottom: 0;
-    text-align: center;
-    justify-content: space-between;
+
+
+.list-inline {
+    width: 1000px;
     display: flex;
+    justify-content: space-between;
 }
 
-.list-inline>li {
-    display: inline-block;
-    
-}
 .list-inline li {
     vertical-align: top;
     padding: 15px 15px 0 15px;
     text-align: left;
-    
+}
+
+.list-inline a{
+    padding: 5px;
+}
+
+.fa-brands {
+    font-size: 36px; 
 }
 
 .list-inline p {
