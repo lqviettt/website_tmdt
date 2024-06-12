@@ -42,9 +42,9 @@ include "class/items_class.php";
                                     <?php echo $result['items_name'] ?>
                                 </td>
                                 <td>
-                                <button><a href="itemsedit.php?items_id=<?php echo $result['items_id'] ?>">Sửa</a></button>
-                                <button><a href="itemsdelete.php?items_id=<?php echo $result['items_id'] ?>">Xóa</a></button>
-                            </td>
+                                    <button><a href="itemsedit.php?items_id=<?php echo $result['items_id'] ?>">Sửa</a></button>
+                                    <button><a href="itemsdelete.php?items_id=<?php echo $result['items_id'] ?>">Xóa</a></button>
+                                </td>
                             </tr>
 
                             <?php

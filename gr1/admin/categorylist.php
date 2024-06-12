@@ -38,9 +38,9 @@ include "class/category_class.php";
                                     <?php echo $result['category_name'] ?>
                                 </td>
                                 <td>
-                                <button><a href="categoryedit.php?category_id=<?php echo $result['category_id'] ?>">Sửa</a></button>
-                                <button><a href="categorydelete.php?category_id=<?php echo $result['category_id'] ?>">Xóa</a></button>
-                            </td>
+                                    <button><a href="categoryedit.php?category_id=<?php echo $result['category_id'] ?>">Sửa</a></button>
+                                    <button><a href="categorydelete.php?category_id=<?php echo $result['category_id'] ?>">Xóa</a></button>
+                                </td>
                             </tr>
 
                             <?php

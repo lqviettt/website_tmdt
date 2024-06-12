@@ -26,21 +26,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db->link->begin_transaction();
 
     try {
-        // Thêm đơn hàng vào bảng orders
-        $query = "INSERT INTO tbl_orders (order_date, total_amount, customer_name, customer_phone, customer_email, customer_address, order_others, gender) 
-                  VALUES ('$order_date', '$total_amount', '$customer_name', '$customer_phone', '$customer_email', '$customer_address', '$order_others', '$gender')";
+        // Thêm khách hàng vào bảng customers
+        $query = "INSERT INTO tbl_customers (
+                customer_name, 
+                customer_phone, 
+                customer_email, 
+                customer_address, 
+                gender
+                ) VALUES (
+                '$customer_name', 
+                '$customer_phone', 
+                '$customer_email', 
+                '$customer_address', 
+                '$gender')";
         $db->insert($query);
+        
+        $customer_id = $db->link->insert_id;
+
+        // Thêm đơn hàng vào bảng orders
+        $query = "INSERT INTO tbl_orders (
+            order_date,
+            total_amount, 
+            customer_id, 
+            order_others
+            ) VALUES (
+            '$order_date', 
+            '$total_amount', 
+            '$customer_id', 
+            '$order_others')";
+        $db->insert($query);
+
         $order_id = $db->link->insert_id;
 
-        // Thêm chi tiết đơn hàng vào bảng order_items
+        // Thêm chi tiết đơn hàng vào bảng order_product
         foreach ($cart as $item) {
             $product_id = $item['product_id'];
             $product_name = $item['product_name'];
             $quantity = $item['quantity'];
-            $price = $item['product_price'];
-            $query = "INSERT INTO tbl_order_product (order_id, product_id, product_name, quantity, price) VALUES ('$order_id', '$product_id', '$product_name', '$quantity', '$price')";
+            $product_price = $item['product_price'];
+            $query = "INSERT INTO tbl_order_product (order_id, product_id, product_name, quantity, product_price) 
+                      VALUES ('$order_id', '$product_id', '$product_name', '$quantity', '$product_price')";
             $db->insert($query);
         }
+
 
         // Hoàn tất transaction
         $db->link->commit();
