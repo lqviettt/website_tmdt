@@ -26,7 +26,7 @@ include "class/order_class.php";
                             <th>Tổng tiền</th>
                             <th>Order Date</th>
                             <th>Order Thêm</th>
-                            <th>Tùy Biến</th>
+                            <th>Trạng thái</th>
                         </tr>
                         <?php
                             if($show){
@@ -67,6 +67,7 @@ include "class/order_class.php";
                                 </td>
                                 <td>
                                     <button><a href="orderdelete.php?order_id=<?php echo $result['order_id'] ?>">Xóa</a></button>
+                                    <button><a href="orderdelete.php?order_id=<?php echo $result['order_id'] ?>">Done</a></button>
                                 </td>
                             </tr>
                             <?php
