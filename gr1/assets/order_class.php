@@ -26,35 +26,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db->link->begin_transaction();
 
     try {
-        // Thêm khách hàng vào bảng customers
-        $query = "INSERT INTO tbl_customers (
-                customer_name, 
-                customer_phone, 
-                customer_email, 
-                customer_address, 
-                gender
-                ) VALUES (
-                '$customer_name', 
-                '$customer_phone', 
-                '$customer_email', 
-                '$customer_address', 
-                '$gender')";
-        $db->insert($query);
+        // Lấy user_id của người dùng đã đăng nhập
+        $user_id = Session::get('user_id');
         
-        $customer_id = $db->link->insert_id;
+        echo "user_id; $user_id";
+        exit();
+        // if ($user_id === false) {
+        //     // Nếu người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+        //     header("Location: login.php");
+        //     exit();
+        // }
+
+        // Cập nhật thông tin khách hàng trong bảng customers
+        $query = "UPDATE tbl_customers SET 
+                customer_name = ?, 
+                customer_phone = ?, 
+                customer_email = ?, 
+                customer_address = ?, 
+                gender = ? 
+                WHERE user_id = ?";
+        $stmt = $db->link->prepare($query);
+        $stmt->bind_param('sssssi', $customer_name, $customer_phone, $customer_email, $customer_address, $gender, $user_id);
+        $stmt->execute();
 
         // Thêm đơn hàng vào bảng orders
         $query = "INSERT INTO tbl_orders (
             order_date,
             total_amount, 
-            customer_id, 
+            user_id, 
             order_others
             ) VALUES (
-            '$order_date', 
-            '$total_amount', 
-            '$customer_id', 
-            '$order_others')";
-        $db->insert($query);
+            ?, 
+            ?, 
+            ?, 
+            ?)";
+        $stmt = $db->link->prepare($query);
+        $stmt->bind_param('sdis', $order_date, $total_amount, $user_id, $order_others);
+        $stmt->execute();
 
         $order_id = $db->link->insert_id;
 
@@ -65,10 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $quantity = $item['quantity'];
             $product_price = $item['product_price'];
             $query = "INSERT INTO tbl_order_product (order_id, product_id, product_name, quantity, product_price) 
-                      VALUES ('$order_id', '$product_id', '$product_name', '$quantity', '$product_price')";
-            $db->insert($query);
+                      VALUES (?, ?, ?, ?, ?)";
+            $stmt = $db->link->prepare($query);
+            $stmt->bind_param('iisid', $order_id, $product_id, $product_name, $quantity, $product_price);
+            $stmt->execute();
         }
-
 
         // Hoàn tất transaction
         $db->link->commit();
@@ -88,3 +97,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 }
+?>

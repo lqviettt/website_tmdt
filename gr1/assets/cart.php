@@ -3,9 +3,11 @@ include "menu.php";
 include "session.php";
 
 Session::init();
+Session::checkSession();
 
 $cart = Session::get('cart') ? Session::get('cart') : [];
 ?>
+
 
 
 <div class="container-cart-product">
@@ -103,7 +105,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                     <table style="width:100%;">
                         <tr>
                             <td colspan="2" style="float: left; margin-bottom: 15px;">
-                                <input type="radio" id="gender" name="gender" value="1" checked="checked">
+                                <input type="radio" id="gender" name="gender" value="1">
                                 <label for="radio1">Anh</label>
                                 <input type="radio" id="gender" name="gender" value="0">
                                 <label for="radio2">Chị</label>
