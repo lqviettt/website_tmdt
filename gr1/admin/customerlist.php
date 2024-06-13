@@ -22,7 +22,7 @@ include "class/customers_class.php";
                             <th>Email</th>
                             <th>Địa chỉ</th>
                             <th>Giới tính</th>
-                            <th>Tùy biến</th>
+                            <!-- <th>Tùy biến</th> -->
                         </tr>
                         <?php
                             if($show){
@@ -53,9 +53,9 @@ include "class/customers_class.php";
                                 <td>
                                     <?php echo $result['gender'] ?>
                                 </td>
-                                <td>
-                                    <button><a href="customerdelete.php?customer_id=<?php echo $result['customer_id'] ?>">Xóa</a></button>
-                                </td>
+                                <!-- <td>
+                                    <button><a href="customerdelete.php?user_id=<?php echo $result['user_id'] ?>">Xóa</a></button>
+                                </td> -->
                             </tr>
                             <?php
                             }

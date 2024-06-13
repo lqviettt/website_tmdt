@@ -21,15 +21,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
-        $test = $user['password'];
+
         if ($user && password_verify($password, $user['password'])) {
             // Đăng nhập thành công
             Session::set('login', true);
+            Session::set('user_id', $user['user_id']);
             Session::set('user_name', $user['user_name']);
-            header("Location: home.php");
-            exit();
+            Session::set('is_admin', $user['is_admin']);
+
+            if ($user['is_admin'] == 1) {
+                // Nếu là admin, chuyển hướng đến trang quản lý
+                header('Location: ../admin');
+                exit();
+            } else {
+                // Nếu là người dùng bình thường, chuyển hướng đến trang chủ
+                header('Location: home.php');
+                exit();
+            }
+
         } else {
-            echo "username: $user_name; pass: $password; userpass: $test";
             $error_message = "Tên đăng nhập hoặc mật khẩu không đúng.";
         }
     } else {

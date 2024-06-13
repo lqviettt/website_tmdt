@@ -30,9 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param('ss', $user_name, $hashed_password);
             $stmt->execute();
 
-            // Chuyển hướng đến trang đăng nhập sau khi đăng ký thành công
-            // header("Location: login.php");
-            echo "username: $user_name; pass: $password; hash: $hashed_password";
+
+            header("Location: login.php");
             exit();
         } else {
             $error_message = "Tên đăng nhập đã tồn tại.";

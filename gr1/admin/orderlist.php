@@ -67,7 +67,7 @@ include "class/order_class.php";
                                 </td>
                                 <td>
                                     <button><a href="orderdelete.php?order_id=<?php echo $result['order_id'] ?>">Xóa</a></button>
-                                    <button><a href="orderdelete.php?order_id=<?php echo $result['order_id'] ?>">Done</a></button>
+                                    <button><a href="#">Done</a></button>
                                 </td>
                             </tr>
                             <?php

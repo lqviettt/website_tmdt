@@ -1,6 +1,6 @@
+<?php require_once "session.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,6 @@
 
     <title>Sản phẩm</title>
 </head>
-
 <body>
     <header>
         <div class="h_top">
@@ -31,12 +30,18 @@
                 <input type="text" class="search_input" placeholder="Bạn cần tìm sản phẩm gì? "><i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <div class="others">
-                <li>
-                    <a href="dangnhap.html" class="cart">
-                        <i class="fa-solid fa-user icon-cart"></i>
-                        Đăng Nhập
-                    </a>
-                </li>
+                <?php
+                // Kiểm tra xem đã đăng nhập hay chưa
+                Session::init();
+                if (Session::get("login")) {
+                    // Nếu đã đăng nhập, hiển thị icon profile và nút đăng xuất
+                    echo '<li><a href="profile.php" class="profile"><i class="fa-solid fa-user icon-cart"></i>Profile</a></li>';
+                    echo '<li><a href="logout.php" class="logout"><i class="fa-solid fa-sign-out icon-cart"></i>Đăng xuất</a></li>';
+                } else {
+                    // Nếu chưa đăng nhập, hiển thị nút Đăng nhập
+                    echo '<li><a href="login.php" class="cart"><i class="fa-solid fa-user icon-cart"></i>Đăng Nhập</a></li>';
+                }
+                ?>
                 <li>
                     <a href="cart.php" class="cart">
                         <i class="fa-solid fa-cart-shopping icon-cart"></i>

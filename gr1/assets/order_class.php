@@ -1,6 +1,6 @@
 <?php
-require_once "database.php"; 
-require_once "session.php"; 
+require_once "database.php";
+require_once "session.php";
 
 Session::init();
 
@@ -26,34 +26,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db->link->begin_transaction();
 
     try {
-        // Lấy user_id của người dùng đã đăng nhập
-        $user_id = Session::get('user_id');
-        
-        echo "user_id; $user_id";
-        exit();
+        // // Lấy user_id của người dùng đã đăng nhập
+        // $user_id = Session::get('user_id');
+
+
         // if ($user_id === false) {
         //     // Nếu người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
         //     header("Location: login.php");
         //     exit();
         // }
 
-        // Cập nhật thông tin khách hàng trong bảng customers
-        $query = "UPDATE tbl_customers SET 
-                customer_name = ?, 
-                customer_phone = ?, 
-                customer_email = ?, 
-                customer_address = ?, 
-                gender = ? 
-                WHERE user_id = ?";
+            // Cập nhật thông tin khách hàng trong bảng customers
+        $query = "INSERT INTO tbl_customers (
+        customer_name, 
+        customer_phone, 
+        customer_email, 
+        customer_address, 
+        gender) VALUE (
+        ?, 
+        ?,
+        ?, 
+        ?, 
+        ?)";
         $stmt = $db->link->prepare($query);
-        $stmt->bind_param('sssssi', $customer_name, $customer_phone, $customer_email, $customer_address, $gender, $user_id);
+        $stmt->bind_param('sssss', $customer_name, $customer_phone, $customer_email, $customer_address, $gender);
         $stmt->execute();
+        
+        $customer_id = $db->link->insert_id;
+
 
         // Thêm đơn hàng vào bảng orders
         $query = "INSERT INTO tbl_orders (
             order_date,
             total_amount, 
-            user_id, 
+            customer_id, 
             order_others
             ) VALUES (
             ?, 
@@ -61,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?, 
             ?)";
         $stmt = $db->link->prepare($query);
-        $stmt->bind_param('sdis', $order_date, $total_amount, $user_id, $order_others);
+        $stmt->bind_param('sdis', $order_date, $total_amount, $customer_id, $order_others);
         $stmt->execute();
 
         $order_id = $db->link->insert_id;
@@ -97,4 +103,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 }
-?>

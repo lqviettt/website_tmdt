@@ -1,7 +1,7 @@
 <?php
 include "menu.php";
 include "class/product_class.php";
-include "session.php";  // Include session management
+require_once "session.php";
 
 Session::init();
 

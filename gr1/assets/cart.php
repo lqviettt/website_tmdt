@@ -1,6 +1,6 @@
 <?php
 include "menu.php";
-include "session.php";
+require_once "session.php";
 
 Session::init();
 Session::checkSession();
@@ -30,8 +30,10 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                         <!-- Phần hiển thị sản phẩm trong giỏ hàng -->
                         <div class="wrap-payment-head" data-product-id="<?php echo $item['product_id']; ?>">
                             <div class="wrap-payment-head-left">
-                                <img src="<?php echo $item['product_img']; ?>" alt="" style="width:150px; padding-bottom: 20px;">
-                                <a href="remove_from_cart.php?product_id=<?php echo $item['product_id']; ?>" class="clear-product">XÓA</a>
+                                <img src="<?php echo $item['product_img']; ?>" alt="" style="width:150px; margin-bottom: 40px;">
+                                <a href="remove_from_cart.php?product_id=<?php echo $item['product_id'];?>">
+                                    <button class="clear-product">XÓA</button>
+                                </a>
                             </div>
                             <div class="wrap-payment-head-right">
                                 <div class="" style="height:65px;">
@@ -105,7 +107,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                     <table style="width:100%;">
                         <tr>
                             <td colspan="2" style="float: left; margin-bottom: 15px;">
-                                <input type="radio" id="gender" name="gender" value="1">
+                                <input type="radio" id="gender" name="gender" value="1" checked="check">
                                 <label for="radio1">Anh</label>
                                 <input type="radio" id="gender" name="gender" value="0">
                                 <label for="radio2">Chị</label>
