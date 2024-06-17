@@ -350,11 +350,11 @@ a{
 }
 
 .list-inline a{
-    padding: 5px;
+    padding: 10px;
 }
 
 .fa-brands {
-    font-size: 36px; 
+    font-size: 36px;
 }
 
 .list-inline p {

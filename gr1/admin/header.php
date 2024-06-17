@@ -6,8 +6,6 @@
     <title>ADMIN</title>
     <link rel="stylesheet" href="style_admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-
-
     <!-- <style>
         .qlsp, .qldh, .qlkh {
             display: none;
@@ -17,7 +15,9 @@
 <body>
     <header>
         <h1>ADMIN</h1>
-        <a href="../assets/logout.php" class="logout"><i class="fa-solid fa-sign-out icon-cart"></i>
-        Đăng xuất</a>
+        <a href="../assets/logout.php" class="logout">
+            <i class="fa-solid fa-sign-out icon-cart"></i>
+            Đăng xuất
+        </a>
     </header>
     

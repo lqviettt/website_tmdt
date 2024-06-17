@@ -19,7 +19,7 @@
              </li>
 
              <li>
-                <a href="facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://web.facebook.com"><i class="fa-brands fa-facebook"></i></a>
                 <a href="tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="instagram.com"><i class="fa-brands fa-instagram"></i></a>
              </li>
