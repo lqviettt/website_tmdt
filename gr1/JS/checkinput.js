@@ -51,3 +51,7 @@ function validateForm(event) {
   }
   return true;
 }
+
+function validateForm() {
+  return checkEmail();
+}
