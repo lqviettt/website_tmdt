@@ -149,12 +149,12 @@ class product
         return $result;
     }
 
-    // public function show_product_by_items($items_id)
-    // {
-    //     $query = "SELECT * FROM tbl_product WHERE items_id = '$items_id'";
-    //     $result = $this->db->select($query);
-    //     return $result;
-    // }
+    public function show_by_items($items_id)
+    {
+        $query = "SELECT * FROM tbl_itemss WHERE items_id = '$items_id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
 
     public function show_product_by_items($items_id, $sort_option = '') {
         $query = "SELECT * FROM tbl_product WHERE items_id = '$items_id'";

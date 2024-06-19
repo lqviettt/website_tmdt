@@ -9,12 +9,19 @@ include "class/product_class.php";
     $items_id = isset($_GET['items_id']) ? $_GET['items_id'] : null;
     $sort_option = isset($_GET['sort']) ? $_GET['sort'] : '';
 
+    $show_items = $product -> show_by_items($items_id);
     $show_product = $product->show_product_by_items($items_id, $sort_option);
 ?>
 
 <div class="category-right row">
     <div class="category-right-top_item">
-        <p>Danh Mục Trà Hoa Quả</p>
+        <?php
+            if($show_items){
+                while($name = $show_items->fetch_assoc()){
+                    echo '<p>'."Danh mục ". $name["items_name"] . '</p>';
+                }
+            }
+        ?>
     </div>
     <!-- <div class="category-right-top_item">
         <button><span>Bộ lọc</span><i class="fa-solid fa-sort-down icon-down"></i></button>
