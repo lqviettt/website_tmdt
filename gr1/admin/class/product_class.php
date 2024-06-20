@@ -2,6 +2,8 @@
 require_once "database.php"
 ?>
 
+<link rel="stylesheet" href="/">
+
 <?php
 class product
 {
@@ -46,7 +48,7 @@ class product
         $items_id = $_POST['items_id'];
         $product_price = $_POST['product_price'];
         $product_img = $_FILES['product_img']['name'];
-        $file_path = '../uploads_img/';
+        $file_path = '../assets/uploads_img/';
         $fileurl = $file_path . $_FILES['product_img']['name'];
 
         $filetarget = basename($_FILES['product_img']['name']);
@@ -67,7 +69,7 @@ class product
         } else {
             move_uploaded_file(
                 $_FILES['product_img']['tmp_name'],
-                "../uploads_img/" . $_FILES['product_img']['name']
+                "../assets/uploads_img/" . $_FILES['product_img']['name']
             );
 
             $query = "INSERT INTO tbl_product (
@@ -96,10 +98,10 @@ class product
         $category_id = $_POST['category_id'];
         $items_id = $_POST['items_id'];
         $product_price = $_POST['product_price'];
-        $file_path = '../uploads_img/';
+        $file_path = '../assets/uploads_img/';
         $fileurl = $file_path . $_FILES['product_img']['name'];
         $filesize = $_FILES['product_img']['size'];
-
+        
         // $current_img = $_POST['current_img'];
 
         // $product_img = $_FILES['product_img']['name'];
@@ -115,7 +117,7 @@ class product
             } else {
                 move_uploaded_file(
                     $_FILES['product_img']['tmp_name'],
-                    "../uploads_img/" . $_FILES['product_img']['name']
+                    "../assets/uploads_img/" . $_FILES['product_img']['name']
                 );
 
                 // Test không chọn ảnh
