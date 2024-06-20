@@ -45,7 +45,7 @@ class product
         $category_id = $_POST['category_id'];
         $items_id = $_POST['items_id'];
         $product_price = $_POST['product_price'];
-        $file_path = '../uploads_img/';
+        $file_path = './uploads_img';
         $fileurl = $file_path . $_FILES['product_img']['name'];
         $filesize = $_FILES['product_img']['size'];
 
@@ -67,7 +67,7 @@ class product
         } else {
             move_uploaded_file(
                 $_FILES['product_img']['tmp_name'],
-                "../uploads_img/" . $_FILES['product_img']['name']
+                "./uploads_img/" . $_FILES['product_img']['name']
             );
 
             $query = "INSERT INTO tbl_product (
@@ -97,7 +97,7 @@ class product
         $items_id = $_POST['items_id'];
         $product_price = $_POST['product_price'];
 
-        $file_path = '../uploads_img/';
+        $file_path = './uploads_img/';
         $fileurl = $file_path . $_FILES['product_img']['name'];
 
         // $product_img = $_FILES['product_img']['name'];
@@ -114,7 +114,7 @@ class product
 
         move_uploaded_file(
             $_FILES['product_img']['tmp_name'],
-            "../uploads_img/" . $_FILES['product_img']['name']
+            "./uploads_img/" . $_FILES['product_img']['name']
         );
 
         $query = "UPDATE tbl_product SET

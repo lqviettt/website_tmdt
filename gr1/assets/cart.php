@@ -157,5 +157,5 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 include "footer.php";
 ?>
 
-<script src="../JS/checkinput.js"></script>
-<script src="../JS/cart.js"></script>
+<script src="./JS/checkinput.js"></script>
+<script src="./JS/cart.js"></script>

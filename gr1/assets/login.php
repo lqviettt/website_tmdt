@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Đăng nhập</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
-<body background="../uploads_img/nen1.jpg">
+<body background="./uploads_img/nen1.jpg">
     <div class="form-container sign-in-container">
         <form method ="post" action="login.php">
             <h1>Đăng nhập</h1>

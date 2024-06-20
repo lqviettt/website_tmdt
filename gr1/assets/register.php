@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </style>
 </head>
-<body background="../uploads_img/nen1.jpg">
+<body background="./uploads_img/nen1.jpg">
     <div class="form-container sign-in-container">
         <form method="post" action="#" onsubmit="return validateForm();">
             <h1>Đăng Ký</h1>

@@ -24,7 +24,7 @@
                 <h3>Capyy Coffe&Tea</h3>
             </div>
             <div class="logo">
-                <img height="60px" width="60px" src="../uploads_img/Screenshot 2024-05-29 195433.png">
+                <img height="60px" width="60px" src="./uploads_img/Screenshot 2024-05-29 195433.png">
             </div>
             <div class="search">
                 <input type="text" class="search_input" placeholder="Bạn cần tìm sản phẩm gì? "><i class="fa-solid fa-magnifying-glass"></i>

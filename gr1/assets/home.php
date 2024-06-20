@@ -17,8 +17,8 @@ include "class/product_class.php";
 <!----------------------Slider----------------------->
 <section id="Slide">
     <div class="slide_container">
-        <img src="../uploads_img/banner1.png">
-        <img src="../uploads_img/banner.png">
+        <img src="./uploads_img/banner1.png">
+        <img src="./uploads_img/banner.png">
 
     </div>
     <div class="dot-container">
