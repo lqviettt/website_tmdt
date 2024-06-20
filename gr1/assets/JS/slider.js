@@ -24,4 +24,3 @@ function slider(index){
 setInterval(imgSlide,3000)
 
 
-//
