@@ -9,7 +9,6 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 ?>
 
 
-
 <div class="container-cart-product">
     <div class="wrap-payment">
         <?php if (empty($cart)): ?>
@@ -24,7 +23,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                     </a>
                 </div>
             <?php else: ?>
-                <form action="order_class.php" method="post">
+                <form action="" method="post">
                     <h3>Thông tin giỏ hàng</h3>
                     <?php foreach ($cart as $item) : ?>
                         <!-- Phần hiển thị sản phẩm trong giỏ hàng -->
@@ -32,7 +31,7 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
                             <div class="wrap-payment-head-left">
                                 <img src="<?php echo $item['product_img']; ?>" alt="" style="width:150px; margin-bottom: 40px;">
                                 <a href="remove_from_cart.php?product_id=<?php echo $item['product_id'];?>">
-                                    <button class="clear-product">XÓA</button>
+                                    <button type="button" class ="clear-product">XÓA</button>
                                 </a>
                             </div>
                             <div class="wrap-payment-head-right">
@@ -157,5 +156,6 @@ $cart = Session::get('cart') ? Session::get('cart') : [];
 include "footer.php";
 ?>
 
-<script src="./JS/checkinput.js"></script>
 <script src="./JS/cart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./JS/checkinput.js"></script>
