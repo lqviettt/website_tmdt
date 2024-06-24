@@ -17,7 +17,7 @@ if(isset($_GET['confirm']) && $_GET['confirm'] == 'yes') {
 
 echo "<script>
     if (confirm('Bạn chắc chắn muốn xóa không?')) {
-        window.location.href = 'your_current_page.php?customer_id=$customer_id&confirm=yes';
+        window.location.href = 'customerdelete.php?customer_id=$customer_id&confirm=yes';
     } else {
         window.location.href = 'customerlist.php'
     }
